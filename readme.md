@@ -56,7 +56,7 @@ bala-viji-swap-website/          # (local folder may be named viji-website)
 2. **Nav** — Desire / Story / Gallery / Rates / Book
 3. **Hero** (`#top`) — name, tagline, CTAs
 4. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
-5. **Story** (`#story`) — corruption arc (2021 → present at 25)
+5. **Story** (`#story`) — **16-chapter** full erotic arc (accordion). Source material: `pasted-text.txt` (raw Grok chat dump; do not deploy required). Polished site prose lives only in `index.html`
 6. **Gallery** (`#gallery`) — photo grid + lightbox (`data-lightbox`, `data-src`, `data-caption`)
 7. **Rates** (`#rates`) — packages + **realistic cost breakdown** table + example totals
 8. **Booking** (`#booking`) — Telegram button (`data-telegram`)
@@ -138,7 +138,9 @@ Or open `index.html` directly (age gate + Telegram still work; some browsers res
 | Age (must stay **25** unless product owner says otherwise) | `index.html` stats + story copy + this README |
 | Telegram handle | `js/main.js` → `const TELEGRAM = "https://t.me/..."` and button label in `index.html` |
 | Colors / fonts | `css/style.css` → `:root` variables |
-| Story text | `index.html` → `#story` `.story` paragraphs |
+| Full erotic story (16 chapters) | `index.html` → `#story` `.chapters` / `.chapter` blocks |
+| Story accordion behavior | `js/main.js` → `initChapters()` |
+| Raw source notes for the arc | `pasted-text.txt` (optional local only; gitignored) |
 | Rates / cost table | `index.html` → `#rates` (cards + `.cost-breakdown`) |
 | Hero image | `css/style.css` → `.hero` background `url(...)` |
 | Age-gate copy | `index.html` → `#age-gate` |
@@ -184,16 +186,42 @@ git push -u origin HEAD
 
 ---
 
+## Story canon (from `pasted-text.txt` → site chapters)
+
+Full title on site: **Ruining Viji**. Narrated in polished third person on the page; source chat is Bala-POV part-by-part.
+
+| Ch | Title | Beats |
+|----|--------|--------|
+| 01 | The First Glance | Kingmaker Academy 2021, first eye contact |
+| 02 | Late-Night Messages | Instagram, café, first kiss |
+| 03 | Telegram Nights | Sext, audio, video, PG fingering |
+| 04 | Birthday Beach to First Night | Besant Nagar, OYO, virginity |
+| 05 | Bus Ride Corruption | 10h AC sleeper to Kovilpatti |
+| 06 | Swollen Pussy & Money Seed | Oil, escort idea planted |
+| 07 | The Fake Call | “Priya” training call |
+| 08 | First Paid Customer | Raja40, highway bonnet, 20k |
+| 09 | Tears to Shopping High | Fever, shame, Express Avenue |
+| 10 | Sold for a Week | Politician beach house lie |
+| 11 | Seven Days of Total Corruption | Driver, gang, DP, ~10L week |
+| 12 | Fear & Shame | Piss reflex, photo panic |
+| 13 | Secret Money Machine | 1BHK, brothers Gopi/Raja/Kumar |
+| 14 | Brother’s Close Call | Gopi visit cover story |
+| 15 | Couple Swap Entry | Blackmail, fake marriage |
+| 16 | The Mangalsutra Wife | Thali/kumkum/jasmine, first swap |
+
+**Age rule:** In 2021 she is ~20 in the story; **current age on site stats = 25**.
+
 ## Agent instructions (Grok CLI)
 
 1. **Read** this README + `index.html` before large rewrites.
-2. Keep **age = 25** unless the user explicitly changes it.
-3. Keep rates **realistic** (tens of thousands INR per night, not multi-lakh fantasy unless user asks).
+2. Keep **age = 25** (current) unless the user explicitly changes it.
+3. Keep rates **realistic** (tens of thousands INR per night, not multi-lakh package cards unless user asks). Beach-house week money in the *story* may stay high as plot; **booking rates section** stays realistic.
 4. Prefer editing existing files over adding frameworks.
 5. New pictures → `assets/pictures/` + gallery markup; rename files to remove spaces.
 6. Do not remove the 18+ age gate.
 7. Do not commit secrets; Telegram username is public by design.
-8. After UI changes, sanity-check: age gate → scroll → open lightbox → Telegram button.
+8. Story edits: keep chapter IDs `ch-01`…`ch-16` and accordion classes; update this README table if you add/remove parts.
+9. After UI changes, sanity-check: age gate → open a story chapter → lightbox → Telegram button.
 
 ---
 

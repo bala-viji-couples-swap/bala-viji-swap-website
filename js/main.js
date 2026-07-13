@@ -209,6 +209,58 @@
     showToast._t = setTimeout(() => toast.classList.remove("show"), 3200);
   }
 
+  /* ---------- Story chapters accordion ---------- */
+  function initChapters() {
+    const chapters = document.querySelectorAll(".chapter");
+    if (!chapters.length) return;
+
+    chapters.forEach((ch) => {
+      const btn = ch.querySelector(".chapter__toggle");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        const opening = !ch.classList.contains("is-open");
+        // close others for cleaner reading
+        chapters.forEach((other) => {
+          other.classList.remove("is-open");
+          const b = other.querySelector(".chapter__toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (opening) {
+          ch.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+          // gentle scroll so header stays visible
+          setTimeout(() => {
+            ch.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, 50);
+        }
+      });
+    });
+
+    const expandAll = document.getElementById("story-expand-all");
+    const collapseAll = document.getElementById("story-collapse-all");
+
+    if (expandAll) {
+      expandAll.addEventListener("click", () => {
+        chapters.forEach((ch) => {
+          ch.classList.add("is-open");
+          const b = ch.querySelector(".chapter__toggle");
+          if (b) b.setAttribute("aria-expanded", "true");
+        });
+      });
+    }
+
+    if (collapseAll) {
+      collapseAll.addEventListener("click", () => {
+        chapters.forEach((ch) => {
+          ch.classList.remove("is-open");
+          const b = ch.querySelector(".chapter__toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     initAgeGate();
@@ -217,5 +269,6 @@
     initLightbox();
     initReveal();
     initBooking();
+    initChapters();
   });
 })();
