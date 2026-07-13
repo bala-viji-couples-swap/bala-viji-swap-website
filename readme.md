@@ -59,15 +59,15 @@ bala-viji-swap-website/          # (local folder may be named viji-website)
 ## Page sections (in order)
 
 1. **Age gate** (`#age-gate`) — 18+ confirm (sessionStorage key `viji_age_ok`)
-2. **Nav** — Desire / Story / Posters / Gallery
-3. **Hero** (`#top`) — uses `assets/pictures/banners/banner-hotel-night.jpg`; CTAs → Story & Posters
-4. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
-5. **Chats** (`#chats`) — fake leaked phone threads (Origin / Training / After highway)
-6. **Story** (`#story`) — **16-chapter** arc (accordion previews). Full long stories: `stories/01-…` through `stories/16-…`
-7. **Nights shared** (`#swap-record`) — past couple-swap nights with dates (2022 → 2026), body “lessons,” couple whispers
-8. **Letter** (`letter.html`) — first-person confession from Viji
-9. **Posters** (`#posters`) — texted banners + portrait posters (EN + Tamil), lightbox
-10. **Gallery** (`#gallery`) — original untexted photos kept, lightbox
+2. **Nav** — Gallery / Posters / Desire / Chats / Nights shared / Story / Her letter
+3. **Hero** (`#top`) — CTAs: See her photos → Gallery; Read her ruin → Story
+4. **Gallery** (`#gallery`) — photos first (look first, read later)
+5. **Posters** (`#posters`) — texted banners + portrait posters (EN + Tamil), lightbox
+6. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
+7. **Chats** (`#chats`) — fake leaked phone threads (Origin / Training / After highway)
+8. **Nights shared** (`#swap-record`) — past couple-swap nights (2022 → 2026)
+9. **Story** (`#story`) — **16-chapter** arc (accordion previews). Full long stories: `stories/01-…` through `stories/16-…`
+10. **Letter** (`letter.html`) — first-person confession from Viji
 11. **Mood** — confession ticker under nav; hero Ken Burns motion
 12. **Footer** — 18+ disclaimer
 
