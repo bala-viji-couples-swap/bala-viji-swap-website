@@ -1,12 +1,11 @@
 /**
  * Vijayalakshmi — site interactions
- * Age gate · nav · lightbox · reveal · booking
+ * Age gate · nav · lightbox · reveal · story chapters
  */
 
 (function () {
   "use strict";
 
-  const TELEGRAM = "https://t.me/vijayalskhmi69";
   const AGE_KEY = "viji_age_ok";
 
   /* ---------- Age gate ---------- */
@@ -184,31 +183,6 @@
     els.forEach((el) => io.observe(el));
   }
 
-  /* ---------- Booking / Telegram ---------- */
-  function initBooking() {
-    const buttons = document.querySelectorAll("[data-telegram]");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        window.open(TELEGRAM, "_blank", "noopener,noreferrer");
-        showToast("Opening Telegram — message @vijayalskhmi69");
-      });
-    });
-  }
-
-  function showToast(message) {
-    let toast = document.getElementById("toast");
-    if (!toast) {
-      toast = document.createElement("div");
-      toast.id = "toast";
-      toast.className = "toast";
-      document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.classList.add("show");
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => toast.classList.remove("show"), 3200);
-  }
-
   /* ---------- Story chapters accordion ---------- */
   function initChapters() {
     const chapters = document.querySelectorAll(".chapter");
@@ -268,7 +242,6 @@
     initSmoothScroll();
     initLightbox();
     initReveal();
-    initBooking();
     initChapters();
   });
 })();
