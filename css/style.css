@@ -242,9 +242,9 @@ a:hover {
   align-items: flex-end;
   padding: calc(var(--nav-h) + 40px) 28px 80px;
   background:
-    linear-gradient(to top, rgba(7, 5, 5, 0.98) 0%, rgba(7, 5, 5, 0.55) 45%, rgba(7, 5, 5, 0.35) 100%),
-    linear-gradient(120deg, rgba(80, 0, 15, 0.4), transparent 50%),
-    url("../assets/pictures/viji-hotel-night.png") center 25% / cover no-repeat;
+    linear-gradient(to top, rgba(7, 5, 5, 0.97) 0%, rgba(7, 5, 5, 0.55) 42%, rgba(7, 5, 5, 0.28) 100%),
+    linear-gradient(120deg, rgba(80, 0, 15, 0.45), transparent 50%),
+    url("../assets/pictures/banners/banner-hotel-night.jpg") center 30% / cover no-repeat;
 }
 
 .hero__content {
@@ -625,6 +625,26 @@ a:hover {
   }
 }
 
+/* ---------- Posters ---------- */
+.posters-section {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(100, 10, 25, 0.28), transparent 50%),
+    var(--bg-elevated);
+}
+
+.gallery-subhead {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--gold-soft);
+  margin: 36px 0 18px;
+  letter-spacing: 0.04em;
+}
+
+.gallery-subhead:first-of-type {
+  margin-top: 0;
+}
+
 /* ---------- Gallery ---------- */
 .gallery-section {
   background:
@@ -636,6 +656,21 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+}
+
+.gallery--banners {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 800px) {
+  .gallery--banners {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gallery--posters {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .gallery__item {
@@ -669,6 +704,15 @@ a:hover {
 .gallery__item.gallery__item--wide {
   grid-column: span 2;
   aspect-ratio: 16 / 10;
+}
+
+.gallery__item.gallery__item--banner {
+  aspect-ratio: 21 / 10;
+}
+
+.gallery__item.gallery__item--banner img {
+  object-fit: cover;
+  object-position: center 40%;
 }
 
 .gallery__caption {
@@ -837,6 +881,10 @@ a:hover {
   .gallery__item.gallery__item--wide {
     grid-column: span 1;
     aspect-ratio: 3 / 4;
+  }
+
+  .gallery__item.gallery__item--banner {
+    aspect-ratio: 16 / 9;
   }
 }
 

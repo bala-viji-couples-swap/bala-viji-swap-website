@@ -54,37 +54,46 @@ bala-viji-swap-website/          # (local folder may be named viji-website)
 ## Page sections (in order)
 
 1. **Age gate** (`#age-gate`) — 18+ confirm (sessionStorage key `viji_age_ok`)
-2. **Nav** — Desire / Story / Gallery
-3. **Hero** (`#top`) — name, tagline, CTAs → Story & Gallery
+2. **Nav** — Desire / Story / Posters / Gallery
+3. **Hero** (`#top`) — uses `assets/pictures/banners/banner-hotel-night.jpg`; CTAs → Story & Posters
 4. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
 5. **Story** (`#story`) — **16-chapter** full erotic arc (accordion). Source: `pasted-text.txt` (local optional; gitignored)
-6. **Gallery** (`#gallery`) — photo grid + lightbox
-7. **Footer** — 18+ disclaimer
+6. **Posters** (`#posters`) — texted banners + portrait posters (EN + Tamil), lightbox
+7. **Gallery** (`#gallery`) — original untexted photos kept, lightbox
+8. **Footer** — 18+ disclaimer
 
 ---
 
 ## Images
 
-Path: `assets/pictures/`
+### Original photos — `assets/pictures/`
 
 | File | Used for |
 |------|----------|
-| `vijayalskhmi1.png` | Afterglow couple selfie |
-| `vijayalskhmi2.png` | Wedding / mangalsutra |
-| `vijayalskhmi3.png` | Purple silk solo hotel |
+| `vijayalskhmi1.png` | Afterglow couple selfie (gallery) |
+| `vijayalskhmi2.png` | Wedding / mangalsutra (gallery) |
+| `vijayalskhmi3.png` | Purple silk solo hotel (gallery) |
 | `vijayalskhmi4.png` | Red top pose (about + gallery) |
-| `vijayalskhmi5.png` | Hill station solo |
-| `vijayalskhmi6.png` | Purple silk close-up |
-| `vijayalskhmi7.png` | Hills couple |
-| `viji-hotel-night.png` | Hero background + gallery couple hotel |
-| `viji-night-date.png` | Barefoot night out |
-| `viji-car-tease.png` | White dress in car |
-| `viji-after-use.jpg` | After multi-partner / wide gallery item |
-| `viji-saree-room.jpeg` | Maroon silk saree |
-| `viji-wedding.png` | Optional dup of wedding |
-| `viji-red-pose.png` | Optional dup of red pose |
+| `vijayalskhmi5.png` | Hill station solo (gallery) |
+| `vijayalskhmi6.png` | Purple silk close-up (gallery) |
+| `vijayalskhmi7.png` | Hills couple (gallery) |
+| `viji-hotel-night.png` | Gallery couple hotel |
+| `viji-night-date.png` | Barefoot night out (gallery) |
+| `viji-car-tease.png` | White dress in car (gallery) |
+| `viji-after-use.jpg` | After multi-partner / wide gallery |
+| `viji-saree-room.jpeg` | Maroon silk saree (gallery) |
+| `viji-wedding.png` / `viji-red-pose.png` | Optional dups |
 
-**Add a new gallery photo:** put file in `assets/pictures/` (no spaces) → copy a `.gallery__item` in `index.html`.
+### Texted posters / banners (EN + Tamil)
+
+| Path | Notes |
+|------|--------|
+| `assets/pictures/banners/banner-hotel-night.jpg` | **Hero background** + posters section |
+| `assets/pictures/banners/banner-*.jpg` | Wide banners in `#posters` |
+| `assets/pictures/posters/poster-*.jpg` | Portrait posters in `#posters` |
+
+**Add a new gallery photo:** put file in `assets/pictures/` (no spaces) → copy a `.gallery__item` in `index.html` under `#gallery`.  
+**Add a poster:** drop JPEG under `posters/` or `banners/` → copy a gallery item under `#posters`.
 
 ---
 
