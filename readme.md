@@ -1,63 +1,203 @@
-# Vijayalakshmi — Erotic static site
+# bala-viji-swap-website
 
-Adult (18+) personal landing page: dark red/black luxury design, full corruption story, photo gallery with lightbox, booking rates, Telegram CTA.
+**GitHub:** https://github.com/bala-viji-couples-swap/bala-viji-swap-website.git  
 
-## Features
+Adult (18+) static landing page for **Vijayalakshmi (age 25)** — dusky mangalsutra wife / Chennai couple-swap character site. Dark red & black erotic UI, story, gallery, realistic INR rate breakdown, Telegram booking CTA.
 
-- Age gate (session-based)
-- Erotic hero, story, rates, and booking sections
-- Photo gallery with full-size lightbox (keyboard arrows / Esc)
-- Mobile responsive nav
-- Separate CSS and JS (no build step)
-- Cloudflare Pages ready
+> **For Grok CLI / any AI agent:** Read this file fully before editing. All product facts, file map, edit points, and deploy steps are below. No build toolchain. Open `index.html` in a browser or serve the folder statically.
 
-## Project structure
+---
+
+## Quick facts (do not invent conflicting canon)
+
+| Field | Value |
+|--------|--------|
+| Character name | Vijayalakshmi (display: Vijayalakshmi / Viji) |
+| Age | **25** (current) |
+| Origin story | From Kovilpatti; came to Chennai ~2021 for UPSC (Kingmaker Academy, Anna Nagar) |
+| Partner | Bala (husband / handler figure in story & some photos) |
+| Location | Chennai, India |
+| Contact | Telegram `@vijayalskhmi69` — set in `js/main.js` as `TELEGRAM` |
+| Content rating | **18+ only** — explicit erotic copy + adult photos |
+| Site type | Static HTML/CSS/JS — **no npm, no bundler, no backend** |
+| Hosting target | Cloudflare Pages (or any static host) |
+
+---
+
+## Repository layout
 
 ```
-viji-website/
-├── index.html
-├── css/style.css
-├── js/main.js
-├── assets/pictures/   # gallery images
-└── readme.md
+bala-viji-swap-website/          # (local folder may be named viji-website)
+├── index.html                   # ALL page content/sections live here
+├── css/
+│   └── style.css                # Theme, layout, gallery, rates, lightbox, age gate
+├── js/
+│   └── main.js                  # Age gate, nav, lightbox, reveal, Telegram CTA
+├── assets/
+│   └── pictures/                # All gallery & hero images
+├── .gitignore
+└── readme.md                    # This file
 ```
 
-## Pictures
+### What each file owns
 
-Images live in `assets/pictures/`. Clean names used for new uploads:
+| File | Responsibility |
+|------|----------------|
+| `index.html` | Structure + copy: age gate, hero, about, story, gallery markup, rates/packages, cost table, booking, footer, lightbox DOM |
+| `css/style.css` | Visual design only. CSS variables at top (`:root`) control colors/fonts |
+| `js/main.js` | Behavior only. Change Telegram URL, age-gate session key, toast text here |
+| `assets/pictures/*` | Image binaries referenced by relative paths from `index.html` |
 
-| File | Notes |
-|------|--------|
-| `vijayalskhmi1–7.png` | Original set |
-| `viji-hotel-night.png` | Hotel couple |
-| `viji-night-date.png` | Night out |
-| `viji-car-tease.png` | Car / white dress |
-| `viji-after-use.jpg` | After-session shot |
-| `viji-saree-room.jpeg` | Maroon saree |
-| `viji-wedding.png` | Wedding (dup of #2) |
-| `viji-red-pose.png` | Red pose (dup of #4) |
+---
 
-## Deployment (Cloudflare Pages)
+## Page sections (in order)
 
-1. Upload the entire folder
-2. Build command: *(none)* — static site
-3. Output directory: `/` (or project root)
-4. HTTPS is automatic
+1. **Age gate** (`#age-gate`) — blocks content until user confirms 18+ (sessionStorage key `viji_age_ok`)
+2. **Nav** — Desire / Story / Gallery / Rates / Book
+3. **Hero** (`#top`) — name, tagline, CTAs
+4. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
+5. **Story** (`#story`) — corruption arc (2021 → present at 25)
+6. **Gallery** (`#gallery`) — photo grid + lightbox (`data-lightbox`, `data-src`, `data-caption`)
+7. **Rates** (`#rates`) — packages + **realistic cost breakdown** table + example totals
+8. **Booking** (`#booking`) — Telegram button (`data-telegram`)
+9. **Footer** — 18+ disclaimer
 
-## Customization
+---
 
-- **Telegram:** change `TELEGRAM` in `js/main.js` and button labels in `index.html`
-- **Images:** add files under `assets/pictures/` and a new `.gallery__item` in `index.html`
-- **Story / rates:** edit the `#story` and `#rates` sections in `index.html`
-- **Theme colors:** CSS variables at the top of `css/style.css`
+## Pricing canon (keep consistent if you edit rates)
+
+Packages are **service fees only** (INR). Hotel, cabs, and supplies are extra (see cost table on site).
+
+| Package | Service fee | Duration / notes |
+|---------|-------------|------------------|
+| Short session | ₹18,000 – ₹28,000 | 2–3 hours, one client |
+| Full night (private) | ₹40,000 – ₹60,000 | ~8–10 hours overnight |
+| Couple swap | ₹55,000 – ₹85,000 | Full night; Bala optional |
+| Group / gangbang | ₹90,000 – ₹1,50,000 | 3–6 men; +₹12,000 per man over 4 |
+| Monthly exclusive | ₹2,50,000 – ₹4,50,000 | ~8–10 priority nights / month |
+| Extra hour | ₹6,000 – ₹8,000 / hr | If agreed same night |
+| Outstation add-on | +₹15,000 – ₹25,000 | Plus room, food, transport |
+| Deposit | 20–30% of service fee | Serious bookings |
+
+**Typical total examples (service + venue + logistics):**
+
+- Solo full night ≈ **₹57,100**
+- Couple swap night ≈ **₹81,500**
+- 4-man group ≈ **₹1,25,000** (~₹31k per man)
+
+When changing prices, update **both** the rate cards **and** the cost table / examples in `index.html` so they stay consistent.
+
+---
+
+## Images
+
+Path: `assets/pictures/`
+
+| File | Used for |
+|------|----------|
+| `vijayalskhmi1.png` | Afterglow couple selfie |
+| `vijayalskhmi2.png` | Wedding / mangalsutra |
+| `vijayalskhmi3.png` | Purple silk solo hotel (also booking section bg) |
+| `vijayalskhmi4.png` | Red top pose (about section + gallery) |
+| `vijayalskhmi5.png` | Hill station solo |
+| `vijayalskhmi6.png` | Purple silk close-up |
+| `vijayalskhmi7.png` | Hills couple |
+| `viji-hotel-night.png` | Hero background + gallery couple hotel |
+| `viji-night-date.png` | Barefoot night out |
+| `viji-car-tease.png` | White dress in car |
+| `viji-after-use.jpg` | After multi-partner / wide gallery item |
+| `viji-saree-room.jpeg` | Maroon silk saree |
+| `viji-wedding.png` | Duplicate of wedding shot (optional; gallery uses `vijayalskhmi2.png`) |
+| `viji-red-pose.png` | Duplicate of red pose (optional; gallery uses `vijayalskhmi4.png`) |
+
+**Add a new gallery photo:**
+
+1. Put file in `assets/pictures/` (no spaces in filename).
+2. Copy a `.gallery__item` block in `index.html`.
+3. Set `data-src`, `data-caption`, `<img src>`, caption text.
+4. Lightbox picks up `[data-lightbox]` automatically — no JS change needed.
+
+---
+
+## Local preview
+
+```bash
+cd /path/to/bala-viji-swap-website   # or viji-website
+python3 -m http.server 8080
+# open http://localhost:8080
+```
+
+Or open `index.html` directly (age gate + Telegram still work; some browsers restrict modules less relevant here since JS is plain script).
+
+---
+
+## Customization cheat sheet
+
+| Want to change… | Edit… |
+|-----------------|--------|
+| Age (must stay **25** unless product owner says otherwise) | `index.html` stats + story copy + this README |
+| Telegram handle | `js/main.js` → `const TELEGRAM = "https://t.me/..."` and button label in `index.html` |
+| Colors / fonts | `css/style.css` → `:root` variables |
+| Story text | `index.html` → `#story` `.story` paragraphs |
+| Rates / cost table | `index.html` → `#rates` (cards + `.cost-breakdown`) |
+| Hero image | `css/style.css` → `.hero` background `url(...)` |
+| Age-gate copy | `index.html` → `#age-gate` |
+
+---
+
+## Deploy (Cloudflare Pages)
+
+1. Connect this GitHub repo **or** upload the project folder.
+2. **Build command:** leave empty / none.
+3. **Output directory:** `/` (project root).
+4. Framework preset: None.
+5. Deploy. HTTPS is automatic.
+
+Any static host works (Netlify, GitHub Pages, S3, nginx). Root must serve `index.html`.
+
+---
+
+## Git workflow notes
+
+- Remote: `https://github.com/bala-viji-couples-swap/bala-viji-swap-website.git`
+- Default branch on GitHub may be `main`.
+- Feature work for age-25 + realistic rates was done on branch:  
+  `feature/age-25-realistic-rates`
+- Push requires GitHub auth on the machine (`gh auth login`, SSH key, or HTTPS PAT).
+
+```bash
+git checkout -b feature/your-change
+# edit files
+git add -A
+git commit -m "Describe why, not only what"
+git push -u origin HEAD
+```
+
+---
 
 ## Tech stack
 
 - HTML5
-- CSS3 (`css/style.css`)
-- Vanilla JS (`js/main.js`)
-- Google Fonts: Cormorant Garamond + DM Sans
+- CSS3 (single file, no preprocessor)
+- Vanilla JS (IIFE, no dependencies)
+- Google Fonts: **Cormorant Garamond** (display) + **DM Sans** (body)
 
 ---
 
-**18+ only.** Explicit adult content.
+## Agent instructions (Grok CLI)
+
+1. **Read** this README + `index.html` before large rewrites.
+2. Keep **age = 25** unless the user explicitly changes it.
+3. Keep rates **realistic** (tens of thousands INR per night, not multi-lakh fantasy unless user asks).
+4. Prefer editing existing files over adding frameworks.
+5. New pictures → `assets/pictures/` + gallery markup; rename files to remove spaces.
+6. Do not remove the 18+ age gate.
+7. Do not commit secrets; Telegram username is public by design.
+8. After UI changes, sanity-check: age gate → scroll → open lightbox → Telegram button.
+
+---
+
+## License / content notice
+
+18+ adult erotic content. All depicted models are presented as adults.  
+Fictional / fantasy presentation for private adult marketing. Respect local laws and platform ToS when deploying.
