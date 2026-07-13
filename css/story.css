@@ -1,0 +1,244 @@
+/* ============================================
+   Full story chapter pages — Ruining Viji
+   ============================================ */
+
+.story-page {
+  padding-top: calc(var(--nav-h) + 1.5rem);
+  padding-bottom: 4rem;
+  min-height: 100vh;
+}
+
+.story-page__wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.story-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.story-breadcrumb a {
+  color: var(--gold);
+}
+
+.story-breadcrumb__sep {
+  opacity: 0.45;
+}
+
+.story-hero {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.story-hero__num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red-hot);
+  margin-bottom: 0.65rem;
+}
+
+.story-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.story-hero__tag {
+  color: var(--gold);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.story-hero__lead {
+  color: var(--text-soft);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 38em;
+}
+
+.story-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-soft);
+}
+
+.story-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 2.4rem 0 1rem;
+  padding-top: 0.5rem;
+}
+
+.story-body p {
+  margin-bottom: 1.15rem;
+}
+
+.story-body p:last-child {
+  margin-bottom: 0;
+}
+
+.story-body .highlight {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.story-body .moan {
+  color: var(--red-hot);
+  font-style: italic;
+}
+
+.story-body em {
+  color: var(--text);
+  font-style: italic;
+}
+
+.story-body blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--red);
+  background: rgba(196, 30, 58, 0.08);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.story-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.story-nav a {
+  display: block;
+  padding: 1rem 1.15rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.story-nav a:hover {
+  border-color: var(--red);
+  background: var(--bg-elevated);
+  color: var(--text);
+}
+
+.story-nav__label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+
+.story-nav__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+.story-nav a.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.story-nav a.story-nav--next {
+  text-align: right;
+  grid-column: 2;
+}
+
+.story-nav a.story-nav--prev {
+  grid-column: 1;
+}
+
+.story-toc {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 1.35rem;
+  background: var(--bg-story);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.story-toc h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: 0.85rem;
+  color: var(--text);
+}
+
+.story-toc ol {
+  list-style: none;
+  counter-reset: toc;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.story-toc li {
+  counter-increment: toc;
+}
+
+.story-toc a {
+  display: flex;
+  gap: 0.65rem;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  padding: 0.35rem 0;
+}
+
+.story-toc a:hover {
+  color: var(--gold-soft);
+}
+
+.story-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  min-width: 1.6em;
+}
+
+.story-toc a.is-current {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.story-footer-note {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .story-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .story-nav a.story-nav--next,
+  .story-nav a.story-nav--prev {
+    grid-column: 1;
+    text-align: left;
+  }
+}

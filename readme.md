@@ -29,9 +29,14 @@ Adult (18+) static landing page for **Vijayalakshmi (age 25)** — dusky mangals
 
 ```
 bala-viji-swap-website/          # (local folder may be named viji-website)
-├── index.html                   # Page content/sections
+├── index.html                   # Page content/sections (story previews + links)
+├── stories/                     # Full long-form chapters (01–16 HTML pages)
+│   ├── 01-the-first-glance.html
+│   ├── …                        # one page per chapter
+│   └── 16-the-mangalsutra-wife.html
 ├── css/
-│   └── style.css                # Theme, layout, gallery, story chapters, lightbox, age gate
+│   ├── style.css                # Theme, layout, gallery, accordion, lightbox, age gate
+│   └── story.css                # Full story chapter page layout
 ├── js/
 │   └── main.js                  # Age gate, nav, lightbox, reveal, story accordion
 ├── assets/
@@ -57,7 +62,7 @@ bala-viji-swap-website/          # (local folder may be named viji-website)
 2. **Nav** — Desire / Story / Posters / Gallery
 3. **Hero** (`#top`) — uses `assets/pictures/banners/banner-hotel-night.jpg`; CTAs → Story & Posters
 4. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
-5. **Story** (`#story`) — **16-chapter** full erotic arc (accordion). Source: `pasted-text.txt` (local optional; gitignored)
+5. **Story** (`#story`) — **16-chapter** arc (accordion previews). Full long stories: `stories/01-…` through `stories/16-…`
 6. **Posters** (`#posters`) — texted banners + portrait posters (EN + Tamil), lightbox
 7. **Gallery** (`#gallery`) — original untexted photos kept, lightbox
 8. **Footer** — 18+ disclaimer
@@ -83,6 +88,7 @@ bala-viji-swap-website/          # (local folder may be named viji-website)
 | `viji-after-use.jpg` | After multi-partner / wide gallery |
 | `viji-saree-room.jpeg` | Maroon silk saree (gallery) |
 | `viji-wedding.png` / `viji-red-pose.png` | Optional dups |
+| `pre-wedding-*.jpg` | Before-marriage dating set (gallery subsection) |
 
 ### Texted posters / banners (EN + Tamil)
 
@@ -113,8 +119,9 @@ python3 -m http.server 8080
 |-----------------|--------|
 | Age (must stay **25** unless owner says otherwise) | `index.html` stats + story + this README |
 | Colors / fonts | `css/style.css` → `:root` |
-| Full erotic story (16 chapters) | `index.html` → `#story` `.chapters` |
+| Full erotic story (16 chapters) | `stories/NN-slug.html` (long form) + previews in `index.html` `#story` |
 | Story accordion | `js/main.js` → `initChapters()` |
+| Story page look | `css/story.css` |
 | Hero image | `css/style.css` → `.hero` background `url(...)` |
 | Age-gate copy | `index.html` → `#age-gate` |
 
@@ -166,12 +173,12 @@ Money / clients inside the **story chapters** are plot only — not a live rate 
 4. Prefer editing existing files over adding frameworks.
 5. New pictures → `assets/pictures/` + gallery markup; no spaces in filenames.
 6. Do not remove the 18+ age gate.
-7. Story edits: keep chapter IDs `ch-01`…`ch-16` and accordion classes; update this README table if you add/remove parts.
-8. Sanity-check: age gate → open a story chapter → lightbox gallery.
+7. Story edits: keep chapter IDs `ch-01`…`ch-16` and accordion classes; full pages live under `stories/` with matching `NN-slug.html`; update this README table if you add/remove parts.
+8. Sanity-check: age gate → open a story chapter preview → **Read full chapter** → prev/next → lightbox gallery.
 
 ---
 
 ## License / content notice
 
 18+ adult erotic content. All depicted models are presented as adults.  
-Fictional / fantasy presentation. Respect local laws and platform ToS when deploying.
+Respect local laws and platform ToS when deploying.

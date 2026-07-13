@@ -935,3 +935,15 @@ a:hover {
     font-size: 1rem;
   }
 }
+
+
+/* Full story chapter CTA */
+.chapter__full-link {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.chapter__full-link .btn {
+  display: inline-flex;
+}
