@@ -1,6 +1,6 @@
 /**
  * Vijayalakshmi — site interactions
- * Age gate · nav · lightbox · reveal · story chapters
+ * Age gate · nav · lightbox · reveal · story chapters · ticker
  */
 
 (function () {
@@ -235,6 +235,63 @@
     }
   }
 
+  /* ---------- Fake chat threads ---------- */
+  function initChats() {
+    const phone = document.getElementById("chat-phone");
+    if (!phone) return;
+
+    const tabs = phone.querySelectorAll(".chat-tab");
+    const threads = {
+      origin: document.getElementById("chat-origin"),
+      training: document.getElementById("chat-training"),
+      highway: document.getElementById("chat-highway"),
+    };
+
+    function show(key) {
+      tabs.forEach((tab) => {
+        const on = tab.getAttribute("data-chat") === key;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      Object.keys(threads).forEach((k) => {
+        const el = threads[k];
+        if (!el) return;
+        const on = k === key;
+        el.classList.toggle("is-active", on);
+        if (on) el.removeAttribute("hidden");
+        else el.setAttribute("hidden", "");
+      });
+      const active = threads[key];
+      if (active) {
+        const scroller = active.querySelector(".chat-thread__msgs");
+        if (scroller) scroller.scrollTop = 0;
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        show(tab.getAttribute("data-chat"));
+      });
+    });
+  }
+
+  /* ---------- Confession ticker ---------- */
+  function initTicker() {
+    const root = document.getElementById("confession-ticker");
+    if (!root) return;
+
+    document.body.classList.add("has-ticker");
+    const lines = Array.from(root.querySelectorAll(".confession-ticker__line"));
+    if (lines.length < 2) return;
+
+    let i = 0;
+    setInterval(() => {
+      lines[i].classList.remove("is-active");
+      i = (i + 1) % lines.length;
+      lines[i].classList.add("is-active");
+    }, 4200);
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     initAgeGate();
@@ -243,5 +300,7 @@
     initLightbox();
     initReveal();
     initChapters();
+    initChats();
+    initTicker();
   });
 })();
