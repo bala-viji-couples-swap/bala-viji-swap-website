@@ -11,18 +11,15 @@
   const INTERVAL_MS = 18000;
   const FADE_MS = 1200;
 
-  const CAPTIONS = [
-    "Private auction · thali on · nothing hidden from the room.",
-    "Look carefully. This is what you are negotiating.",
-    "Soft eyes. Shared nights. Still hungry for the highest claim.",
-    "Mangalsutra wife energy — presented for serious interest only.",
-    "Before the gold… and after she was already ruined properly.",
-    "Chennai wife. Village face. Hotel body. One product.",
-    "He owns the arrangement. She wears the gold. You bid the night.",
-    "Don’t rush the reel — shy in stills, open when claimed.",
-    "18+ · Closed room · Invitation only",
-    "Three faces of her at once — choose the night you want.",
-  ];
+  // 200+ unique lines from captions.js — avoid short-cycle repeats mid-auction
+  const CAPTIONS =
+    window.TV_CAPTIONS && window.TV_CAPTIONS.length
+      ? window.TV_CAPTIONS.slice()
+      : [
+          "Private auction · thali on · nothing hidden from the room.",
+          "Look carefully. This is what you are negotiating.",
+          "He owns the arrangement. She wears the gold. You bid the night.",
+        ];
 
   const stage = document.getElementById("tv-stage");
   const slidesRoot = document.getElementById("slides");
@@ -46,6 +43,9 @@
   let rafId = 0;
   let wakeLock = null;
   let wakeVideo = null;
+  /** Shuffled caption order — reshuffled only after full deck is used */
+  let captionDeck = [];
+  let captionPos = 0;
 
   function shuffle(arr) {
     const a = arr.slice();
@@ -142,18 +142,32 @@
       (paused ? " · paused" : " · live");
   }
 
+  function resetCaptionDeck() {
+    captionDeck = shuffle(CAPTIONS.slice());
+    captionPos = 0;
+  }
+
+  function nextCaptionLine() {
+    if (!captionDeck.length) resetCaptionDeck();
+    if (captionPos >= captionDeck.length) resetCaptionDeck();
+    const line = captionDeck[captionPos];
+    captionPos += 1;
+    return line;
+  }
+
   function showCaption() {
     if (!captionEl) return;
     if (!captionsOn) {
       captionEl.classList.remove("is-on");
       return;
     }
-    captionEl.textContent = CAPTIONS[index % CAPTIONS.length];
+    // Unique line per slide until the full deck is exhausted (200+), then reshuffle
+    captionEl.textContent = nextCaptionLine();
     captionEl.classList.add("is-on");
     clearTimeout(showCaption._t);
     showCaption._t = setTimeout(() => {
       captionEl.classList.remove("is-on");
-    // Keep lines visible most of the slide so the room can read them
+      // Keep lines visible most of the slide so the room can read them
     }, Math.min(INTERVAL_MS - 1500, 14000));
   }
 
@@ -295,6 +309,7 @@
       }
       renderSlides(plan);
       index = 0;
+      resetCaptionDeck();
       slides.forEach((s) => s.classList.remove("is-active", "is-leaving"));
       slides[0].classList.add("is-active");
       updateStatus();

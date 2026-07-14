@@ -14,6 +14,7 @@ mkdir -p dist
 
 # Site runtime only
 cp -a assets css js looks stories tv dist/
+# tv/ includes captions.js + images-data.js
 # Auction-only image pack for /tv reel (not mixed into main gallery markup)
 if [ -d assets1 ]; then
   cp -a assets1 dist/
