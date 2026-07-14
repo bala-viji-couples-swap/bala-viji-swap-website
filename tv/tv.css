@@ -301,23 +301,47 @@ body.no-scroll {
 
 .tv-caption {
   position: fixed;
-  left: 50%;
-  top: 8%;
-  transform: translateX(-50%);
-  z-index: 8;
-  max-width: min(90vw, 40em);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  width: 100%;
+  max-width: none;
   text-align: center;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.65rem, 4.2vw, 2.85rem);
   font-style: italic;
-  color: rgba(242, 232, 232, 0.9);
-  text-shadow: 0 4px 24px #000;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #fff;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 6px 28px rgba(0, 0, 0, 0.85);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.72) 55%,
+    transparent 100%
+  );
   opacity: 0;
   transition: opacity 0.8s;
   pointer-events: none;
-  padding: 0 1rem;
+  padding: 2.5rem 8vw 1.75rem;
+  box-sizing: border-box;
 }
 
 .tv-caption.is-on {
   opacity: 1;
+}
+
+/* Brand/status sit above the caption bar when both show */
+.tv-chrome {
+  bottom: 0;
+  padding-bottom: 0.85rem;
+  z-index: 12;
+}
+
+.tv-stage.show-chrome .tv-caption.is-on,
+.tv-stage:hover .tv-caption.is-on {
+  padding-bottom: 4.25rem;
 }

@@ -153,7 +153,8 @@
     clearTimeout(showCaption._t);
     showCaption._t = setTimeout(() => {
       captionEl.classList.remove("is-on");
-    }, Math.min(INTERVAL_MS - 2000, 6000));
+    // Keep lines visible most of the slide so the room can read them
+    }, Math.min(INTERVAL_MS - 1500, 14000));
   }
 
   function goTo(next) {
