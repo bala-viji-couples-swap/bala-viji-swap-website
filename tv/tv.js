@@ -7,8 +7,9 @@
 (function () {
   "use strict";
 
-  const INTERVAL_MS = 7000;
-  const FADE_MS = 1000;
+  // Slow for private auction: time to look, discuss, fix price
+  const INTERVAL_MS = 18000;
+  const FADE_MS = 1200;
 
   const CAPTIONS = [
     "Private auction · thali on · nothing hidden from the room.",
@@ -152,7 +153,7 @@
     clearTimeout(showCaption._t);
     showCaption._t = setTimeout(() => {
       captionEl.classList.remove("is-on");
-    }, Math.min(INTERVAL_MS - 800, 3500));
+    }, Math.min(INTERVAL_MS - 2000, 6000));
   }
 
   function goTo(next) {
@@ -229,10 +230,10 @@
     // Ensure paths work from /tv, /tv/, or file://.../tv/index.html
     if (!src) return src;
     if (/^https?:\/\//i.test(src) || src.startsWith("data:")) return src;
-    // Already absolute from site root
+    // Already absolute from site root (/assets/... or /assets1/...)
     if (src.startsWith("/")) return src;
-    // Normalize ../assets/... → /assets/... when served over http(s)
-    if (src.startsWith("../assets/")) {
+    // Normalize ../assets... → /assets... when served over http(s)
+    if (src.startsWith("../assets")) {
       try {
         if (location.protocol === "http:" || location.protocol === "https:") {
           return "/" + src.replace(/^\.\.\//, "");

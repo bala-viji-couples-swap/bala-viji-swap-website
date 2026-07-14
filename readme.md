@@ -26,7 +26,7 @@ The site is built as a **house of rooms** (not one endless scroll): photos first
 | Site type | Static HTML/CSS/JS — **no npm, no bundler, no backend** |
 | Hosting target | Cloudflare Pages (or any static host) |
 | Booking / pricing UI | **None** — do not re-add rate cards, cost tables, or Telegram book buttons unless the user asks |
-| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) · Pinterest [Vijayalakshmi_soothu](https://in.pinterest.com/Vijayalakshmi_soothu/) — `#contact` |
+| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) · Pinterest [Vijayalakshmi_soothu](https://in.pinterest.com/Vijayalakshmi_soothu/) · [Facebook](https://www.facebook.com/profile.php?id=61591639572354) — `#contact` |
 | Pinterest pin copy | `pinterest-pin-copy.txt` — titles/descriptions for multi-image SEO pins |
 
 **Age rule:** In 2021 she is ~20 in the story; **current age on site = 25**.  
@@ -339,7 +339,7 @@ Never zip/upload the folder that still contains `.git`.
 
 ---
 
-## TV party reel (unlisted)
+## TV auction reel (unlisted)
 
 **Path:** `/tv/` → `tv/index.html`  
 
@@ -347,44 +347,42 @@ Never zip/upload the folder that still contains `.git`.
 
 | File | Role |
 |------|------|
-| `tv/index.html` | Fullscreen party screensaver start + stage |
+| `tv/index.html` | Fullscreen auction reel start + stage |
 | `tv/tv.css` | TV-optimized dark UI |
-| `tv/tv.js` | Slide builder, autoplay, keyboard, shuffle |
+| `tv/tv.js` | Slide builder, autoplay, keyboard, shuffle, wake lock |
 | `tv/images.json` | JSON catalog (optional fallback) |
 | `tv/images-data.js` | **Embedded catalog** (`window.TV_IMAGES`) — preferred loader |
+| `assets1/viji-auction/` | **Auction-only** image pack (not used in main site gallery markup) |
+| `assets/pictures/` | Original site photos — also included in the TV reel |
+| `assets/videos/` | Video still frames — also included in the TV reel |
+
+**Image sources for `/tv` (all of these):**
+1. `assets/pictures/**` (existing gallery / posters / banners / pre-wedding)
+2. `assets1/viji-auction/**` (auction pack — TV secret route focus)
+3. `assets/videos/**` (stills from the sex video)
+
+Main site pages do **not** link into `assets1/`; only the TV reel catalog does.
 
 **Behavior:**
 - **Portrait** images → **3 per slide**
 - **Landscape / wide** → full slide (or pair if two medium-wide)
-- Auto-advance ~7s, shuffle, optional auction caption lines
+- Auto-advance ~**18s** per slide (auction pace — look & fix price); shuffle; caption lines
 - Keyboard: `←/→` slides, `Space` pause, `F` fullscreen, `C` captions
-- Image list loads from `images-data.js` (no fetch required — fixes `/tv` without trailing slash)
+- Image list loads from `images-data.js` (no fetch required)
 
-**Regenerate image list after adding photos** (requires Pillow):
+**Regenerate TV catalog after adding auction photos** (requires Pillow):
 
 ```bash
-# from repo root
-python3 -c "
-from pathlib import Path
-from PIL import Image
-import json
-root=Path('assets/pictures'); ext={'.jpg','.jpeg','.png','.webp'}
-P,L=[],[]
-for p in sorted(root.rglob('*')):
-    if p.suffix.lower() not in ext: continue
-    w,h=Image.open(p).size
-    item={'src':'../'+p.as_posix(),'w':w,'h':h}
-    (P if h>=w*1.05 else L).append(item)
-data={'portraits':P,'landscapes':L}
-Path('tv/images.json').write_text(json.dumps(data,indent=2))
-Path('tv/images-data.js').write_text('window.TV_IMAGES = '+json.dumps(data)+';\\n')
-print(len(P),'portraits',len(L),'landscapes')
-"
+# from repo root — scans pictures + assets1/viji-auction + videos
+python3 scripts/rebuild-tv-images.py
+# or see cloudflare / agent notes; script may live as one-liner in history
 ```
 
-**Private auction tip:** serve the site (`python3 -m http.server 8080`), open `http://localhost:8080/tv/` (trailing slash preferred), start reel, press **F**. Unlisted on purpose. No blackout controls.
+Minimal one-liner if script missing: scan `assets/pictures`, `assets1/viji-auction`, `assets/videos` into `tv/images-data.js` with `src` like `/assets/...` and `/assets1/...`.
 
-**Keep screen awake:** `tv.js` requests **Screen Wake Lock** when the reel starts (and re-requests on tab focus). Silent video fallback if Wake Lock is missing. **Smart TV panel sleep** is still set in the TV’s own menu (Sleep timer / Eco / Auto power off → Off) — browsers cannot always override that.
+**Private auction tip:** `python3 -m http.server 8080` → `http://localhost:8080/tv/` → start reel → **F**. Unlisted. No blackout controls.
+
+**Keep screen awake:** Wake Lock + silent video fallback in `tv.js`. Still set Smart TV sleep timer to **Off**.
 
 ---
 
