@@ -26,7 +26,8 @@ The site is built as a **house of rooms** (not one endless scroll): photos first
 | Site type | Static HTML/CSS/JS — **no npm, no bundler, no backend** |
 | Hosting target | Cloudflare Pages (or any static host) |
 | Booking / pricing UI | **None** — do not re-add rate cards, cost tables, or Telegram book buttons unless the user asks |
-| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) — contact section `#contact` |
+| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) · Pinterest [Vijayalakshmi_soothu](https://in.pinterest.com/Vijayalakshmi_soothu/) — `#contact` |
+| Pinterest pin copy | `pinterest-pin-copy.txt` — titles/descriptions for multi-image SEO pins |
 
 **Age rule:** In 2021 she is ~20 in the story; **current age on site = 25**.  
 Money / clients inside **story chapters** are plot only — not a live rate menu.
@@ -117,8 +118,9 @@ Primary nav on most pages:
 8. **Chats** (`#chats`) — Origin / Training / After highway phone UI
 9. **Nights she was given** (`#swap-record`) — dated couple-swap diary 2022→2026
 10. **Story** (`#story`) — accordion previews + “Read full chapter →”
-11. **Find us** (`#contact`) — Instagram + X with erotic copy (no booking rates)
-12. **Footer** — 18+ notice + social links
+11. **Sex video** (`#videos`) — **one** video feature; `assets/videos/*` are stills from that single clip; set `data-stream` on `#video-feature` when host URL ready
+12. **Find us** (`#contact`) — Instagram + X + Pinterest (no booking rates)
+13. **Footer** — 18+ notice + social links
 
 ---
 
@@ -232,6 +234,22 @@ Optional source draft: `pasted-text.txt` (local; may be gitignored)
 | `initChats` | Fake phone thread tabs |
 | `initTicker` | Rotating confession bar |
 | `initTonightSecret` | Daily secret line |
+| `initVideos` | Sex video cards + modal player (`data-stream` URL) |
+
+### Sex video (`#videos`) — single clip
+
+- **One video only.** Files in `assets/videos/` (`clip-01` …) are **stills/frames from that same video**, not separate clips.
+- Feature card: `#video-feature` with `data-stream=""` (paste host/mp4 URL later)
+- Clicking stills changes the hero poster frame
+- Play opens `#video-modal` — stream if set, else still + “not linked yet”
+- xHamster title/description options: `xhamster-titles-descriptions.txt` (written for **one** upload)
+
+When the stream is ready:
+
+```html
+<!-- on #video-feature in index.html -->
+data-stream="https://your-host.example/path/video.mp4"
+```
 
 ---
 

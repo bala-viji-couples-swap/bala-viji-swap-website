@@ -322,6 +322,103 @@
     }, 4200);
   }
 
+  /* ---------- Single sex video + stills + modal ---------- */
+  function initVideos() {
+    const feature = document.getElementById("video-feature");
+    const modal = document.getElementById("video-modal");
+    if (!feature || !modal) return;
+
+    const player = document.getElementById("video-modal-player");
+    const titleEl = document.getElementById("video-modal-title");
+    const pending = document.getElementById("video-modal-pending");
+    const pendingImg = document.getElementById("video-modal-pending-img");
+    const posterImg = document.getElementById("video-feature-poster");
+    const playBtn = document.getElementById("video-feature-play");
+    const streamNote = document.getElementById("video-stream-note");
+    const stills = feature.querySelectorAll("[data-still-src]");
+
+    function setPoster(src) {
+      if (!src) return;
+      feature.setAttribute("data-poster", src);
+      if (posterImg) posterImg.src = src;
+      stills.forEach((btn) => {
+        btn.classList.toggle(
+          "is-active",
+          btn.getAttribute("data-still-src") === src
+        );
+      });
+    }
+
+    stills.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setPoster(btn.getAttribute("data-still-src"));
+      });
+    });
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove("no-scroll");
+      if (player) {
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
+        player.classList.add("is-hidden");
+      }
+      if (pending) pending.classList.remove("is-visible");
+    }
+
+    function open() {
+      const stream = (feature.getAttribute("data-stream") || "").trim();
+      const title =
+        feature.getAttribute("data-title") || "Bala Viji — sex video";
+      const poster =
+        feature.getAttribute("data-poster") ||
+        (posterImg && posterImg.src) ||
+        "";
+
+      if (titleEl) titleEl.textContent = title;
+      modal.hidden = false;
+      document.body.classList.add("no-scroll");
+
+      if (stream) {
+        if (pending) pending.classList.remove("is-visible");
+        if (player) {
+          player.classList.remove("is-hidden");
+          player.poster = poster;
+          // Direct .mp4/.webm URL. For xHamster embed iframe, extend later.
+          player.src = stream;
+          player.play().catch(() => {});
+        }
+      } else {
+        if (player) {
+          player.classList.add("is-hidden");
+          player.removeAttribute("src");
+        }
+        if (pendingImg) pendingImg.src = poster;
+        if (pending) pending.classList.add("is-visible");
+      }
+    }
+
+    if ((feature.getAttribute("data-stream") || "").trim()) {
+      feature.classList.add("is-ready");
+      if (streamNote) {
+        streamNote.innerHTML =
+          "Stream linked — tap <strong>Play the night</strong> to watch.";
+      }
+    }
+
+    if (playBtn) playBtn.addEventListener("click", open);
+
+    modal.querySelectorAll("[data-video-close]").forEach((el) => {
+      el.addEventListener("click", close);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) close();
+    });
+  }
+
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     initAgeGate();
@@ -333,5 +430,6 @@
     initChats();
     initTicker();
     initTonightSecret();
+    initVideos();
   });
 })();
