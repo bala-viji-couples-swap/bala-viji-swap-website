@@ -275,6 +275,36 @@
     });
   }
 
+  /* ---------- Tonight's secret (changes by calendar day) ---------- */
+  function initTonightSecret() {
+    const el = document.getElementById("tonight-secret-text");
+    if (!el) return;
+
+    const secrets = [
+      "She still washes the thali after strangers finish on it — slowly, like prayer.",
+      "Bala makes her say thank you in Tamil before she is allowed to sleep.",
+      "On video calls home she sits with her knees together so Amma cannot see the marks.",
+      "The first time she came with another wife’s tongue, she bit Bala’s wrist not to scream.",
+      "He keeps one photo she begged him to delete. She knows. She stays.",
+      "Sometimes she asks to wear the mangalsutra during morning sex with only him — to remember she is owned.",
+      "Highway piss still happens when she is truly scared. He finds it honest.",
+      "She has a salwar that smells like hotel soap. She will not throw it away.",
+      "If you were the other husband, she would look at Bala first — then open anyway.",
+      "Sealed night: she cried because she liked it. That file is not open yet.",
+      "Jasmine in her hair is never for God on swap nights. It is for the men who pay to ruin a wife.",
+      "She practices the moan in the bathroom mirror when he is not home.",
+      "Brothers think she is weak in maths. She is strong at lying with soft eyes.",
+      "After multi-day villas she walks like a newlywed and sits like a used toy.",
+      "He told her good girls also get wet. She proved it for years.",
+    ];
+
+    const day = new Date();
+    const key =
+      day.getFullYear() * 10000 + (day.getMonth() + 1) * 100 + day.getDate();
+    const idx = key % secrets.length;
+    el.textContent = secrets[idx];
+  }
+
   /* ---------- Confession ticker ---------- */
   function initTicker() {
     const root = document.getElementById("confession-ticker");
@@ -302,5 +332,6 @@
     initChapters();
     initChats();
     initTicker();
+    initTonightSecret();
   });
 })();

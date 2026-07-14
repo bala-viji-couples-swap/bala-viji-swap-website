@@ -2,10 +2,13 @@
 
 **GitHub:** https://github.com/bala-viji-couples-swap/bala-viji-swap-website.git  
 
-Adult (18+) static landing page for **Vijayalakshmi (age 25)** — dusky mangalsutra wife / Chennai couple-swap character site. Dark red & black erotic UI, **16-chapter story**, and photo gallery.
+Adult (18+) **static multi-page site** for **Vijayalakshmi (age 25)** and **Bala** — Chennai couple-swap / mangalsutra-wife character world. Dark red & black erotic UI.
+
+The site is built as a **house of rooms** (not one endless scroll): photos first, then explore hubs (Her / Us / Him / Nights / Looks), long story chapters, chats, and dated nights.
 
 > **For Grok CLI / any AI agent:** Read this file fully before editing. No build toolchain. Open `index.html` in a browser or serve the folder statically.  
-> **No rates, no prices, no booking CTA** on this site — it is story + gallery only.
+> **No rates, no prices, no booking CTA** — story, gallery, and couple lore only.  
+> **No site audio** — sound features were removed by owner request.
 
 ---
 
@@ -16,94 +19,219 @@ Adult (18+) static landing page for **Vijayalakshmi (age 25)** — dusky mangals
 | Character name | Vijayalakshmi (display: Vijayalakshmi / Viji) |
 | Age | **25** (current) |
 | Origin story | From Kovilpatti; came to Chennai ~2021 for UPSC (Kingmaker Academy, Anna Nagar) |
-| Partner | Bala (husband / handler figure in story & some photos) |
+| Partner | Bala (husband / handler figure in story & photos) |
+| Brothers (story) | Gopi, Raja, Kumar — still believe she is the studious sister |
 | Location | Chennai, India |
 | Content rating | **18+ only** — explicit erotic copy + adult photos |
 | Site type | Static HTML/CSS/JS — **no npm, no bundler, no backend** |
 | Hosting target | Cloudflare Pages (or any static host) |
 | Booking / pricing UI | **None** — do not re-add rate cards, cost tables, or Telegram book buttons unless the user asks |
+| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) — contact section `#contact` |
+
+**Age rule:** In 2021 she is ~20 in the story; **current age on site = 25**.  
+Money / clients inside **story chapters** are plot only — not a live rate menu.
 
 ---
 
 ## Repository layout
 
 ```
-bala-viji-swap-website/          # (local folder may be named viji-website)
-├── index.html                   # Page content/sections (story previews + links)
-├── stories/                     # Full long-form chapters (01–16 HTML pages)
+bala-viji-swap-website/
+├── index.html                 # Home trailer: secret, rooms, gallery→story
+├── her.html                   # Her hub (letter, looks, photos, chats, story)
+├── us.html                    # Couple hub (how sharing works)
+├── him.html                   # Bala handler notes
+├── nights.html                # Open nights + sealed teasers + tonight’s secret
+├── letter.html                # First-person letter from Viji
+├── looks/
+│   ├── index.html             # All costume looks
+│   ├── pg-girl.html
+│   ├── mall-pink.html
+│   ├── silk-hotel.html
+│   ├── open-invitation.html
+│   ├── saree-wife.html
+│   └── mangalsutra-slut.html
+├── stories/                   # Full long-form chapters 01–16
 │   ├── 01-the-first-glance.html
-│   ├── …                        # one page per chapter
+│   ├── …
 │   └── 16-the-mangalsutra-wife.html
 ├── css/
-│   ├── style.css                # Theme, layout, gallery, accordion, lightbox, age gate
-│   └── story.css                # Full story chapter page layout
+│   ├── style.css              # Theme, home sections, gallery, chats, nights cards
+│   ├── story.css              # Story chapter + letter page layout
+│   └── explore.css            # Rooms, secret, sealed, looks, handler notes
 ├── js/
-│   └── main.js                  # Age gate, nav, lightbox, reveal, story accordion
+│   └── main.js                # Age gate, nav, lightbox, chapters, chats, ticker, secret
 ├── assets/
-│   └── pictures/                # All gallery & hero images
+│   └── pictures/              # Gallery, banners, posters (no spaces in names)
+├── pasted-text.txt            # Optional local story source (often gitignored)
 ├── .gitignore
-└── readme.md                    # This file
+└── readme.md                  # This file
 ```
 
-### What each file owns
+### What major files own
 
-| File | Responsibility |
+| Path | Responsibility |
 |------|----------------|
-| `index.html` | Structure + copy: age gate, hero, about, 16-chapter story, gallery, footer, lightbox DOM |
-| `css/style.css` | Visual design only. CSS variables at top (`:root`) control colors/fonts |
-| `js/main.js` | Behavior only (age gate, nav, lightbox, chapters) |
-| `assets/pictures/*` | Image binaries referenced by relative paths from `index.html` |
+| `index.html` | Home: age gate, ticker, hero, tonight’s secret, explore doors, gallery, posters, desire, chats, nights diary, story previews |
+| `her.html` / `us.html` / `him.html` / `nights.html` | Explore rooms (hubs + deep content) |
+| `looks/*` | Costume/look pages with photos + short fantasy copy |
+| `letter.html` | Long first-person confession from Viji |
+| `stories/*.html` | Long-form erotic chapters (prev/next + TOC) |
+| `css/style.css` | Global theme (`:root` colors/fonts), home UI |
+| `css/story.css` | Long-read / letter layout |
+| `css/explore.css` | Explore rooms, secret, sealed, looks, handler cards |
+| `js/main.js` | Age gate, nav, smooth scroll, lightbox, accordion, chat tabs, ticker, **tonight’s secret** |
 
 ---
 
-## Page sections (in order)
+## Navigation (site-wide rooms)
 
-1. **Age gate** (`#age-gate`) — 18+ confirm (sessionStorage key `viji_age_ok`)
-2. **Nav** — Gallery / Posters / Desire / Chats / Nights shared / Story / Her letter
-3. **Hero** (`#top`) — CTAs: See her photos → Gallery; Read her ruin → Story
-4. **Gallery** (`#gallery`) — photos first (look first, read later)
-5. **Posters** (`#posters`) — texted banners + portrait posters (EN + Tamil), lightbox
-6. **About / Desire** (`#about`) — body description + stats (Age **25**, Chennai, 18+)
-7. **Chats** (`#chats`) — fake leaked phone threads (Origin / Training / After highway)
-8. **Nights shared** (`#swap-record`) — past couple-swap nights (2022 → 2026)
-9. **Story** (`#story`) — **16-chapter** arc (accordion previews). Full long stories: `stories/01-…` through `stories/16-…`
-10. **Letter** (`letter.html`) — first-person confession from Viji
-11. **Mood** — confession ticker under nav; hero Ken Burns motion
-12. **Footer** — 18+ disclaimer
+Primary nav on most pages:
+
+**Gallery · Looks · Her · Us · Him · Nights · Story**
+
+| Room | Path | Purpose |
+|------|------|---------|
+| Home | `index.html` | Trailer: look first, then doors into the house |
+| Gallery | `index.html#gallery` | Photos (before marriage + wife collection) |
+| Looks | `looks/index.html` | PG / mall / silk / red / saree / mangalsutra costumes |
+| Her | `her.html` | Hub into letter, looks, photos, chats, story, nights |
+| Us | `us.html` | Couple dynamic, sharing, what they hide |
+| Him | `him.html` | Bala’s handler notes (training, control, swap) |
+| Nights | `nights.html` | Open nights + **sealed** teasers + daily secret |
+| Story | `index.html#story` + `stories/` | 16-chapter arc previews + full pages |
+| Letter | `letter.html` | Linked from Her (and home CTAs historically) |
+| Chats | `index.html#chats` | Fake leaked phone threads (not live chat) |
+
+---
+
+## Home page flow (`index.html` — in order)
+
+1. **Age gate** — 18+; `sessionStorage` key `viji_age_ok`
+2. **Confession ticker** — rotating lines under nav
+3. **Hero** (`#top`) — Ken Burns background; CTAs → photos / nights / her room
+4. **Tonight’s secret** + **Explore us** room doors (`#explore`)
+5. **Gallery** (`#gallery`) — photos first (“look first, read later”)
+6. **Posters** (`#posters`) — EN + Tamil texted art, lightbox
+7. **Desire** (`#about`) — who she is + stats (age **25**)
+8. **Chats** (`#chats`) — Origin / Training / After highway phone UI
+9. **Nights she was given** (`#swap-record`) — dated couple-swap diary 2022→2026
+10. **Story** (`#story`) — accordion previews + “Read full chapter →”
+11. **Find us** (`#contact`) — Instagram + X with erotic copy (no booking rates)
+12. **Footer** — 18+ notice + social links
+
+---
+
+## Explore features
+
+### Tonight’s secret
+- Element: `#tonight-secret-text` on home and `nights.html`
+- Logic: `js/main.js` → `initTonightSecret()`
+- One erotic line per **calendar day** (stable for that day, rotates over a list)
+
+### Sealed nights
+- On `nights.html` — dashed “locked” cards with blur/tease copy
+- Not empty placeholders: unfinished hooks so visitors return
+- Unlock by writing the real night and moving card to open list + home diary
+
+### Looks (costumes)
+| Page | Vibe |
+|------|------|
+| `looks/pg-girl.html` | Pre-thali, PG room soft |
+| `looks/mall-pink.html` | Public tease, shopping high |
+| `looks/silk-hotel.html` | Purple slip, hotel |
+| `looks/open-invitation.html` | Red top, open pose |
+| `looks/saree-wife.html` | Maroon silk traditional |
+| `looks/mangalsutra-slut.html` | Wedding gold / shared wife |
+
+### Fake chats (`#chats`)
+Styled phone UI only — **not** live messaging. Tabs:
+- **Origin** — Instagram / first kiss era  
+- **Training** — Telegram PG nights  
+- **After highway** — post first paid night  
+
+### Nights diary tone
+Use erotic language in UI labels (not tech jargon):
+- Prefer “Nights she remembers” over “Session log”
+- Prefer “Things her body learned” over “Badges / seals unlocked”
 
 ---
 
 ## Images
 
-### Original photos — `assets/pictures/`
+### Core photos — `assets/pictures/`
 
 | File | Used for |
 |------|----------|
-| `vijayalskhmi1.png` | Afterglow couple selfie (gallery) |
-| `vijayalskhmi2.png` | Wedding / mangalsutra (gallery) |
-| `vijayalskhmi3.png` | Purple silk solo hotel (gallery) |
-| `vijayalskhmi4.png` | Red top pose (about + gallery) |
-| `vijayalskhmi5.png` | Hill station solo (gallery) |
-| `vijayalskhmi6.png` | Purple silk close-up (gallery) |
-| `vijayalskhmi7.png` | Hills couple (gallery) |
-| `viji-hotel-night.png` | Gallery couple hotel |
-| `viji-night-date.png` | Barefoot night out (gallery) |
-| `viji-car-tease.png` | White dress in car (gallery) |
-| `viji-after-use.jpg` | After multi-partner / wide gallery |
-| `viji-saree-room.jpeg` | Maroon silk saree (gallery) |
+| `vijayalskhmi1.png` | Afterglow couple selfie |
+| `vijayalskhmi2.png` | Wedding / mangalsutra |
+| `vijayalskhmi3.png` | Purple silk solo hotel |
+| `vijayalskhmi4.png` | Red top pose (about + gallery + looks) |
+| `vijayalskhmi5.png` | Hill station solo |
+| `vijayalskhmi6.png` | Purple silk close-up |
+| `vijayalskhmi7.png` | Hills couple |
+| `viji-hotel-night.png` | Hotel couple |
+| `viji-night-date.png` | Barefoot night out |
+| `viji-car-tease.png` | White dress in car |
+| `viji-after-use.jpg` | After multi-partner |
+| `viji-saree-room.jpeg` | Maroon silk saree |
 | `viji-wedding.png` / `viji-red-pose.png` | Optional dups |
-| `pre-wedding-*.jpg` | Before-marriage dating set (gallery subsection) |
+| `pre-wedding-*.jpg` | Before-marriage set (gallery + looks) |
 
-### Texted posters / banners (EN + Tamil)
+### Banners / posters
 
 | Path | Notes |
 |------|--------|
-| `assets/pictures/banners/banner-hotel-night.jpg` | **Hero background** + posters section |
+| `assets/pictures/banners/banner-hotel-night.jpg` | **Hero** background (via `.hero__bg`) |
 | `assets/pictures/banners/banner-*.jpg` | Wide banners in `#posters` |
 | `assets/pictures/posters/poster-*.jpg` | Portrait posters in `#posters` |
 
-**Add a new gallery photo:** put file in `assets/pictures/` (no spaces) → copy a `.gallery__item` in `index.html` under `#gallery`.  
-**Add a poster:** drop JPEG under `posters/` or `banners/` → copy a gallery item under `#posters`.
+**Add a gallery photo:** file in `assets/pictures/` (no spaces) → copy a `.gallery__item` under `#gallery`.  
+**Add a poster:** under `posters/` or `banners/` → copy item under `#posters`.  
+**Add a look:** new page under `looks/` + card on `looks/index.html` + link from `her.html` if needed.
+
+---
+
+## Story canon — **Ruining Viji** (16 chapters)
+
+| Ch | File slug | Title | Beats |
+|----|-----------|--------|--------|
+| 01 | `01-the-first-glance` | The First Glance | Kingmaker Academy 2021, first eye contact |
+| 02 | `02-late-night-messages` | Late-Night Messages | Instagram, café, first kiss |
+| 03 | `03-telegram-nights` | Telegram Nights | Sext, audio, video, PG fingering |
+| 04 | `04-birthday-beach-to-first-night` | Birthday Beach to First Night | Besant Nagar, OYO, virginity |
+| 05 | `05-bus-ride-corruption` | Bus Ride Corruption | 10h AC sleeper to Kovilpatti |
+| 06 | `06-swollen-pussy-money-seed` | Swollen Pussy & The Money Seed | Oil, escort idea planted |
+| 07 | `07-the-fake-call` | The Fake Call | “Priya” training call |
+| 08 | `08-first-paid-customer` | First Paid Customer | Raja40, highway bonnet |
+| 09 | `09-tears-to-shopping-high` | Tears to Shopping High | Fever, shame, Express Avenue |
+| 10 | `10-sold-for-a-week` | Sold for a Week | Politician beach house lie |
+| 11 | `11-seven-days-of-total-corruption` | Seven Days of Total Corruption | Driver, gang, DP week |
+| 12 | `12-fear-and-shame` | Fear & Shame | Piss reflex, photo panic |
+| 13 | `13-secret-money-machine` | The Secret Money Machine | 1BHK, brothers’ princess |
+| 14 | `14-brothers-close-call` | Brother’s Close Call | Gopi visit cover story |
+| 15 | `15-couple-swap-entry` | Couple Swap Entry | Blackmail, fake marriage |
+| 16 | `16-the-mangalsutra-wife` | The Mangalsutra Wife | Thali/kumkum/jasmine, first swap |
+
+Full pages: `stories/{slug}.html`  
+Home previews: `index.html` → `#story` → `#ch-01` … `#ch-16`  
+Optional source draft: `pasted-text.txt` (local; may be gitignored)
+
+---
+
+## JS behaviors (`js/main.js`)
+
+| Function | Role |
+|----------|------|
+| `initAgeGate` | 18+ gate, `viji_age_ok` in sessionStorage |
+| `initNav` | Mobile menu + scroll state |
+| `initSmoothScroll` | `[data-scroll]` anchors |
+| `initLightbox` | Gallery / look image viewer |
+| `initReveal` | Scroll-in animations |
+| `initChapters` | Story accordion + expand/collapse all |
+| `initChats` | Fake phone thread tabs |
+| `initTicker` | Rotating confession bar |
+| `initTonightSecret` | Daily secret line |
 
 ---
 
@@ -115,70 +243,109 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
+Prefer `http://` serve over `file://` so relative paths and lightbox behave consistently.
+
 ---
 
 ## Customization cheat sheet
 
 | Want to change… | Edit… |
 |-----------------|--------|
-| Age (must stay **25** unless owner says otherwise) | `index.html` stats + story + this README |
+| Age (keep **25** unless owner says otherwise) | Stats on `index.html`, story copy, this README |
 | Colors / fonts | `css/style.css` → `:root` |
-| Full erotic story (16 chapters) | `stories/NN-slug.html` (long form) + previews in `index.html` `#story` |
+| Home section order | `index.html` section blocks |
+| Tonight’s secret lines | `js/main.js` → `initTonightSecret()` secrets array |
+| Sealed / open nights | `nights.html` (+ full diary on `index.html` `#swap-record`) |
+| Handler notes | `him.html` |
+| Couple / her hubs | `us.html`, `her.html` |
+| Looks | `looks/*.html` + `looks/index.html` |
+| Full story chapter | `stories/NN-slug.html` + preview in `#story` |
 | Story accordion | `js/main.js` → `initChapters()` |
-| Story page look | `css/story.css` |
-| Hero image | `css/style.css` → `.hero` background `url(...)` |
-| Age-gate copy | `index.html` → `#age-gate` |
+| Fake chats | `index.html` → `#chats` |
+| Hero image | `css/style.css` → `.hero__bg` background URL |
+| Age-gate copy | each page’s `#age-gate` (or shared pattern) |
+| Nav rooms | nav block on each HTML page (keep in sync) |
 
 ---
 
 ## Deploy (Cloudflare Pages)
 
-1. Connect this GitHub repo **or** upload the project folder.
-2. **Build command:** none.
-3. **Output directory:** project root.
-4. Framework preset: None.
-
----
-
-## Story canon (from `pasted-text.txt` → site chapters)
-
-Full title on site: **Ruining Viji**.
-
-| Ch | Title | Beats |
-|----|--------|--------|
-| 01 | The First Glance | Kingmaker Academy 2021, first eye contact |
-| 02 | Late-Night Messages | Instagram, café, first kiss |
-| 03 | Telegram Nights | Sext, audio, video, PG fingering |
-| 04 | Birthday Beach to First Night | Besant Nagar, OYO, virginity |
-| 05 | Bus Ride Corruption | 10h AC sleeper to Kovilpatti |
-| 06 | Swollen Pussy & Money Seed | Oil, escort idea planted |
-| 07 | The Fake Call | “Priya” training call |
-| 08 | First Paid Customer | Raja40, highway bonnet |
-| 09 | Tears to Shopping High | Fever, shame, Express Avenue |
-| 10 | Sold for a Week | Politician beach house lie |
-| 11 | Seven Days of Total Corruption | Driver, gang, DP week |
-| 12 | Fear & Shame | Piss reflex, photo panic |
-| 13 | Secret Money Machine | 1BHK, brothers Gopi/Raja/Kumar |
-| 14 | Brother’s Close Call | Gopi visit cover story |
-| 15 | Couple Swap Entry | Blackmail, fake marriage |
-| 16 | The Mangalsutra Wife | Thali/kumkum/jasmine, first swap |
-
-**Age rule:** In 2021 she is ~20 in the story; **current age on site stats = 25**.
-
-Money / clients inside the **story chapters** are plot only — not a live rate menu.
+1. Connect this GitHub repo **or** upload the project folder.  
+2. **Build command:** none.  
+3. **Output directory:** project root.  
+4. Framework preset: **None**.
 
 ---
 
 ## Agent instructions (Grok CLI)
 
-1. **Read** this README + `index.html` before large rewrites.
-2. Keep **age = 25** (current) unless the user explicitly changes it.
-3. **Do not re-add** booking, rate cards, cost breakdown tables, or Telegram CTA unless the user asks.
-4. Prefer editing existing files over adding frameworks.
-5. New pictures → `assets/pictures/` + gallery markup; no spaces in filenames.
-6. Do not remove the 18+ age gate.
-7. Story edits: keep chapter IDs `ch-01`…`ch-16` and accordion classes; full pages live under `stories/` with matching `NN-slug.html`; update this README table if you add/remove parts.
-8. Sanity-check: age gate → open a story chapter preview → **Read full chapter** → prev/next → lightbox gallery.
+1. **Read** this README + relevant HTML before large rewrites.  
+2. Keep **age = 25** (current) unless the user explicitly changes it.  
+3. **Do not re-add** booking, rate cards, cost tables, Telegram CTA, or site audio unless the user asks.  
+4. Prefer editing existing files over adding frameworks/npm.  
+5. New pictures → `assets/pictures/` + markup; **no spaces** in filenames.  
+6. Do not remove the 18+ age gate.  
+7. Story: keep `ch-01`…`ch-16` on home; full pages under `stories/`; update this README table if chapters change.  
+8. Keep nav rooms consistent across `index.html`, hubs, `letter.html`, `looks/*`, `stories/*`.  
+9. UI labels for nights/couple lore should stay **erotic/story-toned**, not tech jargon (“session log”, “badges”, etc.).  
+10. Sanity-check: age gate → Explore doors → gallery lightbox → chats tabs → full story chapter prev/next → nights sealed cards → tonight’s secret text present.
+
+---
+
+## TV party reel (unlisted)
+
+**Path:** `/tv/` → `tv/index.html`  
+
+**Not linked** from main nav or explore rooms (on purpose).
+
+| File | Role |
+|------|------|
+| `tv/index.html` | Fullscreen party screensaver start + stage |
+| `tv/tv.css` | TV-optimized dark UI |
+| `tv/tv.js` | Slide builder, autoplay, keyboard, shuffle |
+| `tv/images.json` | JSON catalog (optional fallback) |
+| `tv/images-data.js` | **Embedded catalog** (`window.TV_IMAGES`) — preferred loader |
+
+**Behavior:**
+- **Portrait** images → **3 per slide**
+- **Landscape / wide** → full slide (or pair if two medium-wide)
+- Auto-advance ~7s, shuffle, optional auction caption lines
+- Keyboard: `←/→` slides, `Space` pause, `F` fullscreen, `C` captions
+- Image list loads from `images-data.js` (no fetch required — fixes `/tv` without trailing slash)
+
+**Regenerate image list after adding photos** (requires Pillow):
+
+```bash
+# from repo root
+python3 -c "
+from pathlib import Path
+from PIL import Image
+import json
+root=Path('assets/pictures'); ext={'.jpg','.jpeg','.png','.webp'}
+P,L=[],[]
+for p in sorted(root.rglob('*')):
+    if p.suffix.lower() not in ext: continue
+    w,h=Image.open(p).size
+    item={'src':'../'+p.as_posix(),'w':w,'h':h}
+    (P if h>=w*1.05 else L).append(item)
+data={'portraits':P,'landscapes':L}
+Path('tv/images.json').write_text(json.dumps(data,indent=2))
+Path('tv/images-data.js').write_text('window.TV_IMAGES = '+json.dumps(data)+';\\n')
+print(len(P),'portraits',len(L),'landscapes')
+"
+```
+
+**Private auction tip:** serve the site (`python3 -m http.server 8080`), open `http://localhost:8080/tv/` (trailing slash preferred), start reel, press **F**. Unlisted on purpose. No blackout controls.
+
+**Keep screen awake:** `tv.js` requests **Screen Wake Lock** when the reel starts (and re-requests on tab focus). Silent video fallback if Wake Lock is missing. **Smart TV panel sleep** is still set in the TV’s own menu (Sleep timer / Eco / Auto power off → Off) — browsers cannot always override that.
+
+---
+
+## Product intent (for future features)
+
+- **Goal:** never-ending *exploration* (many rooms), not infinite scroll.  
+- **Hooks:** photos early, secrets that change, sealed nights, couple triangle (her / him / us), long story depth.  
+- **Avoid:** rate menus, generic porn that breaks Viji face continuity, dumping everything on one page.
 
 ---
 

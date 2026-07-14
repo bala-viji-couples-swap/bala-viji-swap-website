@@ -1314,6 +1314,87 @@ body.has-ticker .hero {
   letter-spacing: 0.04em;
 }
 
+/* ---------- Contact / social ---------- */
+.contact-section {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(100, 12, 24, 0.4), transparent 55%),
+    var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 820px;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-card {
+  display: block;
+  padding: 1.5rem 1.35rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: inherit;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s;
+}
+
+.contact-card:hover {
+  border-color: var(--red-hot);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(196, 30, 58, 0.25);
+  color: inherit;
+}
+
+.contact-card__platform {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+}
+
+.contact-card__handle {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  color: var(--red-hot);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.contact-card p {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.contact-card p em {
+  color: var(--gold-soft);
+  font-style: italic;
+}
+
+.contact-card__cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+.contact-footnote {
+  text-align: center;
+  max-width: 36em;
+  margin: 0 auto;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   text-align: center;
@@ -1325,6 +1406,18 @@ body.has-ticker .hero {
 
 .footer strong {
   color: var(--text-muted);
+}
+
+.footer__social {
+  margin: 10px 0;
+}
+
+.footer__social a {
+  color: var(--gold);
+}
+
+.footer__social a:hover {
+  color: var(--red-hot);
 }
 
 /* ---------- Lightbox ---------- */

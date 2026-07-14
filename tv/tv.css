@@ -1,0 +1,323 @@
+/* TV party screensaver — fullscreen, no main-site chrome */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050203;
+  color: #f2e8e8;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Start gate */
+.start-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(120, 16, 32, 0.45), transparent 55%),
+    #050203;
+  padding: 2rem;
+  text-align: center;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.start-gate.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.start-gate h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.start-gate h1 em {
+  color: #ff1a3c;
+  font-style: italic;
+}
+
+.start-gate .tag {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #d4a574;
+  margin-bottom: 1.25rem;
+}
+
+.start-gate p {
+  max-width: 28em;
+  color: #a89898;
+  line-height: 1.65;
+  margin: 0 auto 1.75rem;
+  font-size: 1.05rem;
+}
+
+.start-gate .hint {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 1.25rem;
+}
+
+.btn-start {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  padding: 1rem 2.25rem;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #c41e3a, #8b0a1e);
+  box-shadow: 0 12px 40px rgba(196, 30, 58, 0.45);
+}
+
+.btn-start:hover {
+  background: linear-gradient(135deg, #ff1a3c, #c41e3a);
+}
+
+/* Stage */
+.tv-stage {
+  position: fixed;
+  inset: 0;
+  background: #050203;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.tv-stage.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.5vw, 24px);
+  padding: clamp(12px, 2.5vw, 36px);
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.slide.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide.is-leaving {
+  opacity: 0;
+  z-index: 1;
+}
+
+.slide--triple .slide-frame {
+  flex: 1 1 0;
+  max-width: 32%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide--single .slide-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide--double .slide-frame {
+  flex: 1 1 0;
+  max-width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+  background: #0a0506;
+}
+
+/* Ken burns light on active single landscapes */
+.slide--single.is-active img {
+  animation: softZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes softZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide--single.is-active img {
+    animation: none;
+  }
+}
+
+/* Overlay chrome */
+.tv-chrome {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.tv-stage.show-chrome .tv-chrome,
+.tv-stage:hover .tv-chrome {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tv-brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.tv-brand em {
+  color: #ff1a3c;
+  font-style: italic;
+}
+
+.tv-brand span {
+  display: block;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4a574;
+  margin-top: 0.2rem;
+}
+
+.tv-status {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #a89898;
+}
+
+.tv-status strong {
+  color: #f2e8e8;
+  font-weight: 500;
+}
+
+.tv-controls {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 12;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tv-stage.show-chrome .tv-controls,
+.tv-stage:hover .tv-controls {
+  opacity: 1;
+}
+
+.tv-controls button {
+  appearance: none;
+  border: 1px solid rgba(196, 30, 58, 0.45);
+  background: rgba(10, 4, 6, 0.85);
+  color: #f2e8e8;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tv-controls button:hover,
+.tv-controls button.is-on {
+  border-color: #ff1a3c;
+  color: #fff;
+  background: rgba(196, 30, 58, 0.35);
+}
+
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  z-index: 15;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #c41e3a, #ff1a3c);
+  transition: width 0.1s linear;
+}
+
+.tv-caption {
+  position: fixed;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  z-index: 8;
+  max-width: min(90vw, 40em);
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: rgba(242, 232, 232, 0.9);
+  text-shadow: 0 4px 24px #000;
+  opacity: 0;
+  transition: opacity 0.8s;
+  pointer-events: none;
+  padding: 0 1rem;
+}
+
+.tv-caption.is-on {
+  opacity: 1;
+}
