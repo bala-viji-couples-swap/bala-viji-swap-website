@@ -1,0 +1,12 @@
+# Cloudflare Workers static assets — never upload git or build junk
+.git
+.git/**
+**/node_modules/**
+dist
+dist/**
+*.md
+.DS_Store
+pasted-text.txt
+cloudflare-build.sh
+.gitignore
+.assetsignore

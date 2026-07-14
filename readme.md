@@ -270,10 +270,39 @@ Prefer `http://` serve over `file://` so relative paths and lightbox behave cons
 
 ## Deploy (Cloudflare Pages)
 
-1. Connect this GitHub repo **or** upload the project folder.  
-2. **Build command:** none.  
-3. **Output directory:** project root.  
-4. Framework preset: **None**.
+Cloudflare Workers/Pages **asset files must be ≤ 25 MiB**.  
+If the build fails on something like:
+
+```text
+.git/objects/pack/pack-….pack … 28.4 MiB
+```
+
+the deploy root is including **`.git`**. Do **not** publish the repo root as assets.
+
+### Required Pages settings
+
+| Setting | Value |
+|---------|--------|
+| Framework preset | **None** |
+| **Build command** | `bash cloudflare-build.sh` |
+| **Build output directory** | `dist` |
+| Root directory | `/` (repo root) |
+
+`cloudflare-build.sh` copies only site files (`*.html`, `assets/`, `css/`, `js/`, `looks/`, `stories/`, `tv/`) into `dist/` and **excludes `.git`**.
+
+Also present:
+- `.assetsignore` — extra ignore list for Workers static assets
+- `.gitignore` — ignores `dist/`, `pasted-text.txt`, etc.
+
+### Direct upload (no Git build)
+
+Upload **only** the contents of `dist/` after running:
+
+```bash
+bash cloudflare-build.sh
+```
+
+Never zip/upload the folder that still contains `.git`.
 
 ---
 

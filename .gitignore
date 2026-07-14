@@ -1,0 +1,19 @@
+# Dependencies / tooling (none required, but keep clean)
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Build output
+dist/
+
+# Local / private drafts
+pasted-text.txt
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*~
