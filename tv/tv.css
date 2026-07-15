@@ -345,3 +345,104 @@ body.no-scroll {
 .tv-stage:hover .tv-caption.is-on {
   padding-bottom: 4.25rem;
 }
+
+/* Private claimed-nights ledger — /tv only */
+.claim-ledger {
+  margin: 1.75rem auto 0;
+  max-width: 28rem;
+  text-align: left;
+  padding: 1.25rem 1.35rem 1.15rem;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 165, 116, 0.45);
+  background: linear-gradient(160deg, rgba(40, 12, 18, 0.95), rgba(8, 4, 6, 0.98));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.claim-ledger__tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d4a574;
+  margin-bottom: 0.45rem;
+}
+
+.claim-ledger__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.85rem;
+}
+
+.claim-ledger__deal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.claim-ledger__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.35rem;
+}
+
+.claim-ledger__row span {
+  color: #a89898;
+  flex-shrink: 0;
+}
+
+.claim-ledger__row strong {
+  color: #f2e8e8;
+  font-weight: 600;
+  text-align: right;
+}
+
+.claim-ledger__sold {
+  color: #ff1a3c !important;
+  letter-spacing: 0.12em;
+}
+
+.claim-ledger__money {
+  color: #e8c9a0 !important;
+  font-size: 1.05rem;
+}
+
+.claim-ledger__foot {
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: #8a7a7a;
+  line-height: 1.45;
+}
+
+.claim-ledger__foot kbd {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 0.72rem;
+  color: #e8c9a0;
+}
+
+.claim-ledger--overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  margin: 0;
+  width: min(92vw, 28rem);
+  pointer-events: auto;
+}
+
+.claim-ledger--overlay[hidden] {
+  display: none !important;
+}
+
+.start-gate .hint {
+  margin-top: 1.25rem;
+}

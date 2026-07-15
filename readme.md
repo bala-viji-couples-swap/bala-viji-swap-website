@@ -101,7 +101,9 @@ Primary nav on most pages:
 | Him | `him.html` | Bala’s handler notes (training, control, swap) |
 | Nights | `nights.html` | Open nights + **sealed** teasers + daily secret |
 | Story | `index.html#story` + `stories/` | 16-chapter arc previews + full pages |
-| Letter | `letter.html` | Linked from Her (and home CTAs historically) |
+| Letter 01 | `letter.html` | First confession |
+| Letter 02 | `letter-02.html` | **NEW** — first sex tape; shy; money & clients |
+| Handler notes | `him.html` | Includes **Note 07** (first tape) + **Note 08** (multi-night packages) |
 | Chats | `index.html#chats` | Fake leaked phone threads (not live chat) |
 
 ---
@@ -381,6 +383,8 @@ python3 scripts/rebuild-tv-images.py
 Minimal one-liner if script missing: scan `assets/pictures`, `assets1/viji-auction`, `assets/videos` into `tv/images-data.js` with `src` like `/assets/...` and `/assets1/...`.
 
 **Private auction tip:** `python3 -m http.server 8080` → `http://localhost:8080/tv/` → start reel → **F**. Unlisted. No blackout controls.
+
+**Private claimed-nights ledger ( /tv only ):** shown on the start screen and toggle with **L** / **Ledger** during the reel. Records multi-night closes (e.g. 10 nights · ₹14,00,000). **Not** linked or shown on the public site.
 
 **Keep screen awake:** Wake Lock + silent video fallback in `tv.js`. Still set Smart TV sleep timer to **Off**.
 

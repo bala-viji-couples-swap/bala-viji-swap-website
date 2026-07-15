@@ -24,9 +24,45 @@
         Portraits run three-wide. Wide shots own the wall.
       </p>
       <button type="button" class="btn-start" id="btn-start">Open the auction reel</button>
+
+      <aside class="claim-ledger" id="claim-ledger-start" aria-label="Private claimed nights">
+        <p class="claim-ledger__tag">Private ledger · /tv only · not on public site</p>
+        <h2 class="claim-ledger__title">Claimed nights</h2>
+        <div class="claim-ledger__deal">
+          <div class="claim-ledger__row">
+            <span>Status</span>
+            <strong class="claim-ledger__sold">SOLD</strong>
+          </div>
+          <div class="claim-ledger__row">
+            <span>Product</span>
+            <strong>Vijayalakshmi (Viji) · mangalsutra wife</strong>
+          </div>
+          <div class="claim-ledger__row">
+            <span>Package</span>
+            <strong>10 nights</strong>
+          </div>
+          <div class="claim-ledger__row">
+            <span>Closed at</span>
+            <strong class="claim-ledger__money">₹14,00,000</strong>
+          </div>
+          <div class="claim-ledger__row">
+            <span>Per night (avg)</span>
+            <strong>₹1,40,000</strong>
+          </div>
+          <div class="claim-ledger__row">
+            <span>Note</span>
+            <strong>Room came on the liners · deal locked same session</strong>
+          </div>
+        </div>
+        <p class="claim-ledger__foot">
+          Multi-night claim. Bala holds the structure. She wears the gold.
+          Press <kbd>L</kbd> during the reel to show/hide this ledger.
+        </p>
+      </aside>
+
       <p class="hint">
         Auto ~18s per slide (time to look & fix price) · Space = pause longer<br>
-        ← → change slide · F fullscreen · C lines<br>
+        ← → change slide · F fullscreen · C lines · <strong>L ledger</strong><br>
         Keeps the screen awake when the browser allows (Wake Lock).<br>
         On a Smart TV, also set sleep / eco timer to <strong>Off</strong> in TV settings.<br>
         Path: <strong>/tv/</strong> · unlisted · private auction only
@@ -43,8 +79,37 @@
       <button type="button" id="btn-pause">Pause</button>
       <button type="button" id="btn-shuffle">Shuffle on</button>
       <button type="button" id="btn-captions">Lines on</button>
+      <button type="button" id="btn-ledger">Ledger</button>
       <button type="button" id="btn-fs">Fullscreen</button>
     </div>
+
+    <aside class="claim-ledger claim-ledger--overlay" id="claim-ledger-overlay" hidden aria-label="Private claimed nights">
+      <p class="claim-ledger__tag">Private ledger · /tv only</p>
+      <h2 class="claim-ledger__title">Claimed nights</h2>
+      <div class="claim-ledger__deal">
+        <div class="claim-ledger__row">
+          <span>Status</span>
+          <strong class="claim-ledger__sold">SOLD</strong>
+        </div>
+        <div class="claim-ledger__row">
+          <span>Package</span>
+          <strong>10 nights · Viji</strong>
+        </div>
+        <div class="claim-ledger__row">
+          <span>Closed at</span>
+          <strong class="claim-ledger__money">₹14,00,000</strong>
+        </div>
+        <div class="claim-ledger__row">
+          <span>Avg / night</span>
+          <strong>₹1,40,000</strong>
+        </div>
+        <div class="claim-ledger__row">
+          <span>Note</span>
+          <strong>Liners hit · multi-night claim locked</strong>
+        </div>
+      </div>
+      <p class="claim-ledger__foot">Press <kbd>L</kbd> or Ledger to hide · not on public site</p>
+    </aside>
 
     <p class="tv-caption" id="tv-caption" aria-live="polite"></p>
 

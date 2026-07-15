@@ -1,4 +1,4 @@
-/* Unique private-auction lines for /tv — one per slide until exhausted, then reshuffled */
+/* Unique private-auction lines for /tv — includes multi-night claim liners */
 window.TV_CAPTIONS = [
   "Private auction · thali on · nothing hidden from the room.",
   "Look carefully. This is what you are negotiating.",
@@ -213,5 +213,17 @@ window.TV_CAPTIONS = [
   "This face closed deals before. Be the next line in her private ledger.",
   "Chennai couple. Shared wife. Open bids in the room only.",
   "She stays soft so you stay cruel enough to claim her properly.",
-  "If you still have no number after this face, you were never bidding."
+  "If you still have no number after this face, you were never bidding.",
+  "SOLD energy in the room — 10 nights already claimed at fourteen lakhs.",
+  "Multi-night claim closed: ten nights · fourteen lakhs · Viji under gold.",
+  "Someone already locked ten nights. Watch what they bought.",
+  "Average one-forty a night for ten. That is mangalsutra-wife market rate in this room.",
+  "The liners did not just tease — they closed a ten-night package.",
+  "Claimed package on the private ledger: 10 nights / ₹14L. Next bidder, raise the bar.",
+  "She is not a one-hour sample. Ten nights proved that.",
+  "Private ledger only on /tv — ten nights sold, story sealed.",
+  "If you want multi-night access, speak in packages not minutes.",
+  "Fourteen lakhs for ten nights — the wall just showed you why.",
+  "Bala structure. Viji body. Ten-night claim already in the book.",
+  "Room came on the sentences. Cash followed. Ten nights locked."
 ];

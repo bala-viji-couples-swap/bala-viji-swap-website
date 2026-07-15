@@ -32,6 +32,8 @@
   const btnFs = document.getElementById("btn-fs");
   const btnShuffle = document.getElementById("btn-shuffle");
   const btnCaptions = document.getElementById("btn-captions");
+  const btnLedger = document.getElementById("btn-ledger");
+  const ledgerOverlay = document.getElementById("claim-ledger-overlay");
 
   let slides = [];
   let index = 0;
@@ -458,11 +460,34 @@
     btnCaptions.classList.add("is-on");
   }
 
+  function setLedgerVisible(on) {
+    if (!ledgerOverlay) return;
+    if (on) {
+      ledgerOverlay.hidden = false;
+      if (btnLedger) btnLedger.classList.add("is-on");
+      setPaused(true);
+    } else {
+      ledgerOverlay.hidden = true;
+      if (btnLedger) btnLedger.classList.remove("is-on");
+    }
+  }
+
+  function toggleLedger() {
+    if (!ledgerOverlay) return;
+    setLedgerVisible(ledgerOverlay.hidden);
+  }
+
+  if (btnLedger) {
+    btnLedger.addEventListener("click", toggleLedger);
+  }
+
   document.addEventListener("keydown", (e) => {
     if (gate && !gate.classList.contains("hidden")) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         startShow();
+      } else if (e.key === "l" || e.key === "L") {
+        // ledger only after reel starts
       }
       return;
     }
@@ -481,6 +506,9 @@
       enterFullscreen();
     } else if (e.key === "c" || e.key === "C") {
       if (btnCaptions) btnCaptions.click();
+    } else if (e.key === "l" || e.key === "L") {
+      e.preventDefault();
+      toggleLedger();
     }
   });
 

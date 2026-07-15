@@ -20,6 +20,7 @@ if [ -d assets1 ]; then
   cp -a assets1 dist/
 fi
 cp -a *.html dist/ 2>/dev/null || true
+# includes letter-02.html and all hubs
 
 # Optional: ignore private draft if present
 rm -f dist/pasted-text.txt 2>/dev/null || true

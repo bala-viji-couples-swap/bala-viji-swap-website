@@ -281,6 +281,9 @@
     if (!el) return;
 
     const secrets = [
+      "New letter dropped — she wrote about her first sex tape. Still shy. Still wet.",
+      "She said yes to the camera for money and clients. Read Letter 02.",
+      "Bala’s new handler notes: film her while ashamed; sell weeks not minutes.",
       "She still washes the thali after strangers finish on it — slowly, like prayer.",
       "Bala makes her say thank you in Tamil before she is allowed to sleep.",
       "On video calls home she sits with her knees together so Amma cannot see the marks.",
