@@ -102,7 +102,9 @@ Primary nav on most pages:
 | Nights | `nights.html` | Open nights + **sealed** teasers + daily secret |
 | Story | `index.html#story` + `stories/` | 16-chapter arc previews + full pages |
 | Letter 01 | `letter.html` | First confession |
-| Letter 02 | `letter-02.html` | **NEW** — first sex tape; shy; money & clients |
+| Letter 02 | `letter-02.html` | First sex tape; shy; money & clients |
+| Letter 03 | `letter-03.html` | **NEW** — first time she asked for raw |
+| After the thali | `after.html` | **NEW** — Season 2 teasers beyond ch.16 |
 | Handler notes | `him.html` | Includes **Note 07** (first tape) + **Note 08** (multi-night packages) |
 | Chats | `index.html#chats` | Fake leaked phone threads (not live chat) |
 
@@ -235,8 +237,9 @@ Optional source draft: `pasted-text.txt` (local; may be gitignored)
 | `initChapters` | Story accordion + expand/collapse all |
 | `initChats` | Fake phone thread tabs |
 | `initTicker` | Rotating confession bar |
-| `initTonightSecret` | Daily secret line |
+| `initTonightSecret` | Daily secret line **with room links** (innerHTML) |
 | `initVideos` | Sex video cards + modal player (`data-stream` URL) |
+| `initPathTracking` | **NEW** — localStorage rooms/chapters progress + continue bar |
 
 ### Sex video (`#videos`) — single clip
 

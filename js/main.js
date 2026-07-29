@@ -275,37 +275,251 @@
     });
   }
 
-  /* ---------- Tonight's secret (changes by calendar day) ---------- */
+  /* ---------- Tonight's secret (changes by calendar day; routes to rooms) ---------- */
   function initTonightSecret() {
     const el = document.getElementById("tonight-secret-text");
     if (!el) return;
 
     const secrets = [
-      "New letter dropped — she wrote about her first sex tape. Still shy. Still wet.",
-      "She said yes to the camera for money and clients. Read Letter 02.",
-      "Bala’s new handler notes: film her while ashamed; sell weeks not minutes.",
-      "She still washes the thali after strangers finish on it — slowly, like prayer.",
-      "Bala makes her say thank you in Tamil before she is allowed to sleep.",
-      "On video calls home she sits with her knees together so Amma cannot see the marks.",
-      "The first time she came with another wife’s tongue, she bit Bala’s wrist not to scream.",
-      "He keeps one photo she begged him to delete. She knows. She stays.",
-      "Sometimes she asks to wear the mangalsutra during morning sex with only him — to remember she is owned.",
-      "Highway piss still happens when she is truly scared. He finds it honest.",
-      "She has a salwar that smells like hotel soap. She will not throw it away.",
-      "If you were the other husband, she would look at Bala first — then open anyway.",
-      "Sealed night: she cried because she liked it. That file is not open yet.",
-      "Jasmine in her hair is never for God on swap nights. It is for the men who pay to ruin a wife.",
-      "She practices the moan in the bathroom mirror when he is not home.",
-      "Brothers think she is weak in maths. She is strong at lying with soft eyes.",
-      "After multi-day villas she walks like a newlywed and sits like a used toy.",
-      "He told her good girls also get wet. She proved it for years.",
+      'Just unsealed: she asked for raw — not ordered. <a href="nights.html#night-asked-raw">Open the night →</a>',
+      'Letter 03 is live — hunger with her name on it. <a href="letter-03.html">Read her throat →</a>',
+      'Chapter 16 is not the end. <a href="after.html">After the thali →</a>',
+      'She said yes to the camera for money and clients. <a href="letter-02.html">Letter 02 →</a>',
+      'Bala’s notes: film her while ashamed; sell weeks not minutes. <a href="him.html">His room →</a>',
+      'She still washes the thali after strangers finish on it — slowly, like prayer. <a href="us.html">Us →</a>',
+      'Bala makes her say thank you in Tamil before she is allowed to sleep. <a href="him.html">Handler notes →</a>',
+      'On video calls home she sits with knees together so Amma cannot see the marks. <a href="her.html">Her room →</a>',
+      'The first time she came with another wife’s tongue, she bit Bala’s wrist not to scream. <a href="nights.html">Nights →</a>',
+      'He keeps one photo she begged him to delete. She knows. She stays. <a href="index.html#gallery">Gallery →</a>',
+      'Sometimes she asks to wear the mangalsutra during morning sex with only him. <a href="looks/mangalsutra-slut.html">That look →</a>',
+      'Highway piss still happens when she is truly scared. He finds it honest. <a href="stories/08-first-paid-customer.html">Ch.08 →</a>',
+      'Sealed night: she cried because she liked it. That file is not open yet. <a href="nights.html">Sealed grid →</a>',
+      'Jasmine in her hair is never for God on swap nights. <a href="stories/16-the-mangalsutra-wife.html">Ch.16 →</a>',
+      'She practices the moan in the bathroom mirror when he is not home. <a href="index.html#chats">Chats →</a>',
+      'Brothers think she is weak in maths. She is strong at lying with soft eyes. <a href="stories/14-brothers-close-call.html">Ch.14 →</a>',
+      'After multi-day villas she walks like a newlywed and sits like a used toy. <a href="index.html#swap-record">Diary →</a>',
+      'First tape frames are stills from one reel. <a href="index.html#videos">Sex video →</a>',
+      'Season 2 hooks are sealed on purpose. Leave and feel behind. <a href="after.html">Teasers →</a>',
+      'He told her good girls also get wet. She proved it for years. <a href="letter.html">Letter 01 →</a>',
     ];
 
     const day = new Date();
     const key =
       day.getFullYear() * 10000 + (day.getMonth() + 1) * 100 + day.getDate();
     const idx = key % secrets.length;
-    el.textContent = secrets[idx];
+    el.innerHTML = secrets[idx];
+  }
+
+  /* ---------- Path progress + continue reading (localStorage) ---------- */
+  const TRACK_ROOMS_KEY = "viji_rooms_seen";
+  const TRACK_CH_KEY = "viji_chapters_seen";
+  const CONTINUE_KEY = "viji_continue";
+  const ROOM_LABELS = {
+    home: "Home",
+    her: "Her",
+    us: "Us",
+    him: "Him",
+    nights: "Nights",
+    looks: "Looks",
+    letter: "Letters",
+    after: "After",
+    story: "Story",
+    gallery: "Gallery",
+    video: "Video",
+  };
+  const ROOM_TOTAL = 8; // her us him nights looks letter after story
+  const CHAPTER_TOTAL = 16;
+
+  function readSet(key) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return new Set();
+      const arr = JSON.parse(raw);
+      return new Set(Array.isArray(arr) ? arr : []);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  function writeSet(key, set) {
+    try {
+      localStorage.setItem(key, JSON.stringify(Array.from(set)));
+    } catch (e) {
+      /* private mode */
+    }
+  }
+
+  function detectRoom() {
+    const forced = document.body && document.body.getAttribute("data-track-room");
+    if (forced) return forced;
+    const path = (location.pathname || "").replace(/\\/g, "/");
+    if (/stories\/\d{2}-/.test(path)) return "story";
+    if (path.includes("looks/")) return "looks";
+    if (path.endsWith("her.html")) return "her";
+    if (path.endsWith("us.html")) return "us";
+    if (path.endsWith("him.html")) return "him";
+    if (path.endsWith("nights.html")) return "nights";
+    if (path.includes("letter")) return "letter";
+    if (path.endsWith("after.html")) return "after";
+    if (path.endsWith("index.html") || path.endsWith("/")) return "home";
+    return null;
+  }
+
+  function detectChapter() {
+    const path = (location.pathname || "") + (location.href || "");
+    const m = path.match(/stories\/(\d{2})-([^/?#]+)/);
+    if (!m) return null;
+    return {
+      num: m[1],
+      slug: m[1] + "-" + m[2].replace(/\.html$/, ""),
+      file: m[1] + "-" + m[2].replace(/\.html$/, "") + ".html",
+      title: document.title.replace(/\s*[—|-].*$/, "").trim() || ("Chapter " + m[1]),
+    };
+  }
+
+  function hrefPrefix() {
+    const path = (location.pathname || "").replace(/\\/g, "/");
+    if (path.includes("/stories/") || path.includes("/looks/") || path.includes("/tv/")) {
+      return "../";
+    }
+    return "";
+  }
+
+  function initPathTracking() {
+    const room = detectRoom();
+    const rooms = readSet(TRACK_ROOMS_KEY);
+    const chapters = readSet(TRACK_CH_KEY);
+    const prefix = hrefPrefix();
+
+    if (room && room !== "home") {
+      // map home sections later; track named rooms
+      if (ROOM_LABELS[room]) rooms.add(room);
+    }
+    // Home hash sections
+    if (room === "home") {
+      rooms.add("home");
+      const markHash = () => {
+        const h = (location.hash || "").replace("#", "");
+        if (h === "gallery") rooms.add("gallery");
+        if (h === "story") rooms.add("story");
+        if (h === "videos") rooms.add("video");
+        if (h === "chats") rooms.add("her");
+        writeSet(TRACK_ROOMS_KEY, rooms);
+        renderProgress(rooms, chapters, prefix);
+      };
+      markHash();
+      window.addEventListener("hashchange", markHash);
+    }
+
+    const ch = detectChapter();
+    if (ch) {
+      chapters.add(ch.num);
+      rooms.add("story");
+      try {
+        localStorage.setItem(
+          CONTINUE_KEY,
+          JSON.stringify({
+            href: prefix + "stories/" + ch.file,
+            title: ch.title,
+            num: ch.num,
+          })
+        );
+      } catch (e) {
+        /* ignore */
+      }
+    }
+
+    // Letter pages count as letter room
+    if (room === "letter") rooms.add("letter");
+    if (room === "after") rooms.add("after");
+
+    writeSet(TRACK_ROOMS_KEY, rooms);
+    writeSet(TRACK_CH_KEY, chapters);
+    renderProgress(rooms, chapters, prefix);
+    renderContinueBar(prefix);
+  }
+
+  function countCoreRooms(rooms) {
+    const core = ["her", "us", "him", "nights", "looks", "letter", "after", "story"];
+    return core.filter((r) => rooms.has(r)).length;
+  }
+
+  function renderProgress(rooms, chapters, prefix) {
+    let bar = document.getElementById("path-progress");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "path-progress";
+      bar.className = "path-progress";
+      bar.setAttribute("role", "status");
+      const ticker = document.getElementById("confession-ticker");
+      if (ticker && ticker.parentNode) {
+        ticker.parentNode.insertBefore(bar, ticker.nextSibling);
+      } else {
+        document.body.insertBefore(bar, document.body.firstChild);
+      }
+    }
+    const r = countCoreRooms(rooms);
+    const c = chapters.size;
+    bar.innerHTML =
+      '<span class="path-progress__label">Your path</span>' +
+      '<span class="path-progress__stats">' +
+      r +
+      "/" +
+      ROOM_TOTAL +
+      " rooms · " +
+      c +
+      "/" +
+      CHAPTER_TOTAL +
+      " chapters" +
+      "</span>" +
+      '<a class="path-progress__link" href="' +
+      prefix +
+      'her.html">Explore deeper →</a>';
+  }
+
+  function renderContinueBar(prefix) {
+    let data = null;
+    try {
+      data = JSON.parse(localStorage.getItem(CONTINUE_KEY) || "null");
+    } catch (e) {
+      data = null;
+    }
+    if (!data || !data.href) return;
+
+    // Don't show on the same chapter
+    const ch = detectChapter();
+    if (ch && data.num === ch.num) return;
+
+    let bar = document.getElementById("continue-bar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "continue-bar";
+      bar.className = "continue-bar";
+      document.body.appendChild(bar);
+    }
+
+    // Fix href depth if stored from wrong folder
+    let href = data.href;
+    if (prefix === "" && href.startsWith("../")) href = href.replace(/^\.\.\//, "");
+    if (prefix === "../" && !href.startsWith("../") && href.startsWith("stories/")) {
+      href = "../" + href;
+    }
+
+    bar.innerHTML =
+      '<div class="continue-bar__inner">' +
+      '<span class="continue-bar__label">Continue</span>' +
+      '<a class="continue-bar__link" href="' +
+      href +
+      '">' +
+      (data.title || "Your chapter") +
+      " →</a>" +
+      '<button type="button" class="continue-bar__close" aria-label="Dismiss">×</button>' +
+      "</div>";
+    document.body.classList.add("has-continue-bar");
+    bar.querySelector(".continue-bar__close").addEventListener("click", () => {
+      document.body.classList.remove("has-continue-bar");
+      bar.remove();
+    });
   }
 
   /* ---------- Confession ticker ---------- */
@@ -434,5 +648,6 @@
     initTicker();
     initTonightSecret();
     initVideos();
+    initPathTracking();
   });
 })();
