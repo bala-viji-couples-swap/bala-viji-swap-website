@@ -1,0 +1,18 @@
+# AWS Amplify Hosting — static site (no React build yet)
+# Console: App → Build settings → use this file from repo root
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "Static HTML site — no npm install"
+    build:
+      commands:
+        - bash cloudflare-build.sh
+        - echo "Build output in dist/"
+  artifacts:
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths: []

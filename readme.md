@@ -291,6 +291,19 @@ Prefer `http://` serve over `file://` so relative paths and lightbox behave cons
 
 ---
 
+## Deploy (AWS Amplify + new GitHub repo)
+
+**Agent has no GitHub login (`gh auth status` fails) and no AWS credentials.**  
+You must create the repo + link Amplify in the consoles. Step-by-step: **`docs/AMPLIFY-GITHUB-SETUP.md`**.
+
+| Item | Value |
+|------|--------|
+| Suggested subdomain | **`viji.fuckmywife.top`** |
+| Amplify config in repo | **`amplify.yml`** → build `bash cloudflare-build.sh` → publish **`dist/`** |
+| Auth | GitHub OAuth in Amplify console — **do not** paste AWS keys into chat |
+
+---
+
 ## Deploy (Cloudflare Pages)
 
 Cloudflare Workers/Pages **asset files must be ≤ 25 MiB**.  
