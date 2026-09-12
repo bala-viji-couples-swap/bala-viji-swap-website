@@ -633,3 +633,52 @@ body.has-continue-bar {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.85rem;
 }
+
+
+/* Photo strips on hubs — drop reuse across site */
+.photo-strip {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.photo-strip__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+.photo-strip__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0.25rem 0 0.35rem;
+  font-weight: 600;
+}
+.photo-strip__blurb {
+  margin: 0;
+  color: var(--text-muted, #c8b8b8);
+  max-width: 36rem;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+.gallery--strip {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.55rem;
+}
+.look-thumbs--expanded {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+.look-thumbs--expanded img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.look-thumbs--expanded [data-lightbox]:hover img {
+  outline: 1px solid rgba(196, 60, 60, 0.55);
+}

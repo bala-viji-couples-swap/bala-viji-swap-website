@@ -7,7 +7,7 @@ Adult (18+) **static multi-page site** for **Vijayalakshmi (age 25)** and **Bala
 The site is built as a **house of rooms** (not one endless scroll): photos first, then explore hubs (Her / Us / Him / Nights / Looks), long story chapters, chats, and dated nights.
 
 > **For Grok CLI / any AI agent:** Read this file fully before editing. No build toolchain. Open `index.html` in a browser or serve the folder statically.  
-> **No rates, no prices, no booking CTA** — story, gallery, and couple lore only.  
+> **No rates / price tables** — story + gallery lore. **Telegram booking** OK: [@viji_lachu](https://t.me/viji_lachu) (service + video call).  
 > **No site audio** — sound features were removed by owner request.
 
 ---
@@ -25,8 +25,8 @@ The site is built as a **house of rooms** (not one endless scroll): photos first
 | Content rating | **18+ only** — explicit erotic copy + adult photos |
 | Site type | Static HTML/CSS/JS — **no npm, no bundler, no backend** |
 | Hosting target | Cloudflare Pages (or any static host) |
-| Booking / pricing UI | **None** — do not re-add rate cards, cost tables, or Telegram book buttons unless the user asks |
-| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) · Pinterest [Vijayalakshmi_soothu](https://in.pinterest.com/Vijayalakshmi_soothu/) · [Facebook](https://www.facebook.com/profile.php?id=61591639572354) — `#contact` |
+| Booking / pricing UI | **No rate cards** — Telegram [@viji_lachu](https://t.me/viji_lachu) for service + video-call booking (user-approved) |
+| Social | Instagram [@pattu.vg69](https://www.instagram.com/pattu.vg69) · X [@BalaViji69](https://x.com/BalaViji69) · Pinterest [Vijayalakshmi_soothu](https://in.pinterest.com/Vijayalakshmi_soothu/) · [Facebook · 3k](https://www.facebook.com/share/1UAxdTLZSQ/) · Telegram [@viji_lachu](https://t.me/viji_lachu) (service + video-call booking) — `#contact` |
 | Pinterest pin copy | `pinterest-pin-copy.txt` — titles/descriptions for multi-image SEO pins |
 
 **Age rule:** In 2021 she is ~20 in the story; **current age on site = 25**.  
