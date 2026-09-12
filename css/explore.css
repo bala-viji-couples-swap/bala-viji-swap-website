@@ -560,3 +560,76 @@ body.has-continue-bar {
   gap: 0.6rem;
   align-items: center;
 }
+
+
+/* --- New drop + FB chat rooms --- */
+.hub-wrap--wide {
+  max-width: 1100px;
+}
+.gallery--drop,
+.gallery--shots {
+  margin-top: 0.5rem;
+}
+.gallery--shots .gallery__item--shot img {
+  object-fit: cover;
+  object-position: top center;
+  aspect-ratio: 9 / 16;
+  background: #0a0a0c;
+}
+.explore-room--new {
+  outline: 1px solid rgba(196, 60, 60, 0.45);
+  box-shadow: 0 0 0 1px rgba(196, 60, 60, 0.15);
+}
+.look-card--new {
+  position: relative;
+}
+.look-card--new::after {
+  content: "NEW";
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  background: var(--red, #c43c3c);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+}
+.hub-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.drop-banner {
+  background: rgba(196, 60, 60, 0.12);
+  border: 1px solid rgba(196, 60, 60, 0.35);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  color: var(--text-muted, #c8b8b8);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.drop-banner strong {
+  color: var(--text, #f2e8e8);
+}
+.drop-banner a {
+  color: var(--gold-soft, #e8c98a);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* denser grid on drop pages */
+.gallery--drop {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.65rem;
+}
+@media (min-width: 900px) {
+  .gallery--drop {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+.gallery--shots {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.85rem;
+}

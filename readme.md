@@ -406,6 +406,20 @@ Minimal one-liner if script missing: scan `assets/pictures`, `assets1/viji-aucti
 
 ---
 
+## New media rooms (2026-09 drop)
+
+| Path | What |
+|------|------|
+| `gallery-drop.html` | **267** compressed stills from `viji-new/` → `assets/pictures/viji-drop/` |
+| `chats-facebook.html` | **12** Facebook Messenger sex-chat screenshots → `assets/pictures/chats-fb/` |
+| Home `#gallery-drop` | Featured 12 + CTAs |
+| Home `#chats` tab **Facebook** | Teaser thread → full screenshot room |
+| Source dumps | `viji-new/`, `chat-screenshots/` gitignored — do not ship raw multi‑MB PNGs |
+
+Re-import: convert with Pillow into those asset folders, regenerate pages if counts change.
+
+---
+
 ## Product intent (for future features)
 
 - **Goal:** never-ending *exploration* (many rooms), not infinite scroll.  

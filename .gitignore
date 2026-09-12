@@ -17,3 +17,9 @@ pasted-text.txt
 .vscode/
 *.swp
 *~
+
+# Raw import dumps (site uses compressed assets/pictures/viji-drop + chats-fb)
+viji-new/
+chat-screenshots/
+chat-screenshoot/
+assets/pictures/viji-drop/featured-snippet.html

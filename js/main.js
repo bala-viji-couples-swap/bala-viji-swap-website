@@ -245,6 +245,7 @@
       origin: document.getElementById("chat-origin"),
       training: document.getElementById("chat-training"),
       highway: document.getElementById("chat-highway"),
+      facebook: document.getElementById("chat-facebook"),
     };
 
     function show(key) {
@@ -281,6 +282,8 @@
     if (!el) return;
 
     const secrets = [
+      '267 new stills of her body — thali on, soft face, full drop live. <a href=\"gallery-drop.html\">Open the set →</a>',
+      'Facebook Messenger leaks: Vinoth, Tamil, pundai talk, beach wife selfie in the thread. <a href=\"chats-facebook.html\">Read the screens →</a>',
       'Just unsealed: she asked for raw — not ordered. <a href="nights.html#night-asked-raw">Open the night →</a>',
       'Letter 03 is live — hunger with her name on it. <a href="letter-03.html">Read her throat →</a>',
       'Chapter 16 is not the end. <a href="after.html">After the thali →</a>',
@@ -325,6 +328,7 @@
     after: "After",
     story: "Story",
     gallery: "Gallery",
+    drop: "New drop",
     video: "Video",
   };
   const ROOM_TOTAL = 8; // her us him nights looks letter after story
