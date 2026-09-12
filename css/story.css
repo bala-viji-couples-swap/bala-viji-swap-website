@@ -304,3 +304,74 @@
     text-align: left;
   }
 }
+
+
+/* Dual POV blocks — Bala / Viji */
+.story-dual-note {
+  margin: 0 0 1.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(212, 168, 90, 0.35);
+  border-radius: var(--radius-sm, 8px);
+  background: rgba(212, 168, 90, 0.08);
+  color: var(--text-soft, #c8b8b8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.story-dual-note strong {
+  color: var(--gold-soft, #e8d5a3);
+  font-weight: 600;
+}
+
+.pov {
+  margin: 2rem 0;
+  padding: 1.35rem 1.25rem 1.15rem;
+  border-radius: var(--radius, 12px);
+  border: 1px solid transparent;
+}
+
+.pov--bala {
+  background: rgba(196, 30, 58, 0.07);
+  border-color: rgba(196, 30, 58, 0.28);
+}
+
+.pov--viji {
+  background: rgba(212, 168, 90, 0.07);
+  border-color: rgba(212, 168, 90, 0.28);
+}
+
+.pov__label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.pov--bala .pov__label {
+  color: var(--red-hot, #e85a6b);
+}
+
+.pov--viji .pov__label {
+  color: var(--gold, #d4a85a);
+}
+
+.pov p {
+  margin-bottom: 1.1rem;
+}
+
+.pov p:last-child {
+  margin-bottom: 0;
+}
+
+.pov strong,
+.pov b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
+  .pov {
+    padding: 1.5rem 1.5rem 1.25rem;
+  }
+}
