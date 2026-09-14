@@ -52,10 +52,8 @@ bala-viji-swap-website/
 │   ├── open-invitation.html
 │   ├── saree-wife.html
 │   └── mangalsutra-slut.html
-├── stories/                   # Full long-form chapters 01–16
-│   ├── 01-the-first-glance.html
-│   ├── …
-│   └── 16-the-mangalsutra-wife.html
+├── stories/                   # Full long-form dual-POV chapters 01–13
+│   ├── 01-the-first-glance.html … 13-shared-bath-towel-return-karthik-dp.html
 ├── css/
 │   ├── style.css              # Theme, home sections, gallery, chats, nights cards
 │   ├── story.css              # Story chapter + letter page layout
@@ -198,237 +196,22 @@ Use erotic language in UI labels (not tech jargon):
 
 ---
 
-## Story canon — **Ruining Viji** (16 chapters)
+## Story canon — **Ruining Viji** (13 dual-POV chapters)
 
 | Ch | File slug | Title | Beats |
 |----|-----------|--------|--------|
-| 01 | `01-the-first-glance` | The First Glance | Kingmaker Academy 2021, first eye contact |
-| 02 | `02-late-night-messages` | Late-Night Messages | Instagram, café, first kiss |
-| 03 | `03-telegram-nights` | Telegram Nights | Sext, audio, video, PG fingering |
-| 04 | `04-birthday-beach-to-first-night` | Birthday Beach to First Night | Besant Nagar, OYO, virginity |
-| 05 | `05-bus-ride-corruption` | Bus Ride Corruption | 10h AC sleeper to Kovilpatti |
-| 06 | `06-swollen-pussy-money-seed` | Swollen Pussy & The Money Seed | Oil, escort idea planted |
-| 07 | `07-the-fake-call` | The Fake Call | “Priya” training call |
-| 08 | `08-first-paid-customer` | First Paid Customer | Raja40, highway bonnet |
-| 09 | `09-tears-to-shopping-high` | Tears to Shopping High | Fever, shame, Express Avenue |
-| 10 | `10-sold-for-a-week` | Sold for a Week | Politician beach house lie |
-| 11 | `11-seven-days-of-total-corruption` | Seven Days of Total Corruption | Driver, gang, DP week |
-| 12 | `12-fear-and-shame` | Fear & Shame | Piss reflex, photo panic |
-| 13 | `13-secret-money-machine` | The Secret Money Machine | 1BHK, brothers’ princess |
-| 14 | `14-brothers-close-call` | Brother’s Close Call | Gopi visit cover story |
-| 15 | `15-couple-swap-entry` | Couple Swap Entry | Blackmail, fake marriage |
-| 16 | `16-the-mangalsutra-wife` | The Mangalsutra Wife | Thali/kumkum/jasmine, first swap |
+| 01 | `01-the-first-glance` | The First Glance | Academy corridor; IG |
+| 02 | `02-late-night-messages` | Late-Night Messages | DMs; café; kiss |
+| 03 | `03-telegram-nights` | Telegram Nights | Sext; audio; cam |
+| 04 | `04-birthday-beach-to-first-night` | Birthday Beach to First Night | Besant; OYO virgin |
+| 05 | `05-bus-ride-corruption` | Bus Ride Corruption | AC sleeper all night |
+| 06 | `06-home-breaks-love-rebuilds-move-in` | Home Breaks · Love Rebuilds · Move In | Stop; park fail; leave PG |
+| 07 | `07-fourth-floor-shared-bath-half-open-door` | Fourth Floor · Shared Bath · Half-Open Door | Peep-fuck; 5 boys |
+| 08 | `08-cup-morning-door-thevidiya` | Cup · Morning Door · Thevidiya | Cup pee; public slut brand |
+| 09 | `09-terrace-whiskey-group-call-door-floor` | Terrace Whiskey · Group Call · Door · Floor | Beam; TG record; floor anal |
+| 10 | `10-morning-snore-porn-threat-long-night-pin` | Morning Snore · Porn Threat · Long Night Pin | Fake they-recorded; pin |
+| 11 | `11-lifetime-slow-kisses-mouth-hour-first-take` | Lifetime Slow · Mouth Hour · First Take | Party night 1 |
+| 12 | `12-pussy-feast-lube-ass-pee-left-with-them` | Pussy Feast · Lube · Ass · Pee · Left | Money seed; left next door |
+| 13 | `13-shared-bath-towel-return-karthik-dp` | Shared Bath · Towel · Karthik DP | Morning bath; DP watched |
 
-Full pages: `stories/{slug}.html`  
-Home previews: `index.html` → `#story` → `#ch-01` … `#ch-16`  
-Optional source draft: `pasted-text.txt` (local; may be gitignored)
-
----
-
-## JS behaviors (`js/main.js`)
-
-| Function | Role |
-|----------|------|
-| `initAgeGate` | 18+ gate, `viji_age_ok` in sessionStorage |
-| `initNav` | Mobile menu + scroll state |
-| `initSmoothScroll` | `[data-scroll]` anchors |
-| `initLightbox` | Gallery / look image viewer |
-| `initReveal` | Scroll-in animations |
-| `initChapters` | Story accordion + expand/collapse all |
-| `initChats` | Fake phone thread tabs |
-| `initTicker` | Rotating confession bar |
-| `initTonightSecret` | Daily secret line **with room links** (innerHTML) |
-| `initVideos` | Sex video cards + modal player (`data-stream` URL) |
-| `initPathTracking` | **NEW** — localStorage rooms/chapters progress + continue bar |
-
-### Sex video (`#videos`) — single clip
-
-- **One video only.** Files in `assets/videos/` (`clip-01` …) are **stills/frames from that same video**, not separate clips.
-- Feature card: `#video-feature` with `data-stream=""` (paste host/mp4 URL later)
-- Clicking stills changes the hero poster frame
-- Play opens `#video-modal` — stream if set, else still + “not linked yet”
-- xHamster title/description options: `xhamster-titles-descriptions.txt` (written for **one** upload)
-
-When the stream is ready:
-
-```html
-<!-- on #video-feature in index.html -->
-data-stream="https://your-host.example/path/video.mp4"
-```
-
----
-
-## Local preview
-
-```bash
-cd /path/to/bala-viji-swap-website
-python3 -m http.server 8080
-# open http://localhost:8080
-```
-
-Prefer `http://` serve over `file://` so relative paths and lightbox behave consistently.
-
----
-
-## Customization cheat sheet
-
-| Want to change… | Edit… |
-|-----------------|--------|
-| Age (keep **25** unless owner says otherwise) | Stats on `index.html`, story copy, this README |
-| Colors / fonts | `css/style.css` → `:root` |
-| Home section order | `index.html` section blocks |
-| Tonight’s secret lines | `js/main.js` → `initTonightSecret()` secrets array |
-| Sealed / open nights | `nights.html` (+ full diary on `index.html` `#swap-record`) |
-| Handler notes | `him.html` |
-| Couple / her hubs | `us.html`, `her.html` |
-| Looks | `looks/*.html` + `looks/index.html` |
-| Full story chapter | `stories/NN-slug.html` + preview in `#story` |
-| Story accordion | `js/main.js` → `initChapters()` |
-| Fake chats | `index.html` → `#chats` |
-| Hero image | `css/style.css` → `.hero__bg` background URL |
-| Age-gate copy | each page’s `#age-gate` (or shared pattern) |
-| Nav rooms | nav block on each HTML page (keep in sync) |
-
----
-
-## Deploy (AWS Amplify + new GitHub repo)
-
-**Agent has no GitHub login (`gh auth status` fails) and no AWS credentials.**  
-You must create the repo + link Amplify in the consoles. Step-by-step: **`docs/AMPLIFY-GITHUB-SETUP.md`**.
-
-| Item | Value |
-|------|--------|
-| Suggested subdomain | **`viji.fuckmywife.top`** |
-| Amplify config in repo | **`amplify.yml`** → build `bash cloudflare-build.sh` → publish **`dist/`** |
-| Auth | GitHub OAuth in Amplify console — **do not** paste AWS keys into chat |
-
----
-
-## Deploy (Cloudflare Pages)
-
-Cloudflare Workers/Pages **asset files must be ≤ 25 MiB**.  
-If the build fails on something like:
-
-```text
-.git/objects/pack/pack-….pack … 28.4 MiB
-```
-
-the deploy root is including **`.git`**. Do **not** publish the repo root as assets.
-
-### Required Pages settings
-
-| Setting | Value |
-|---------|--------|
-| Framework preset | **None** |
-| **Build command** | `bash cloudflare-build.sh` |
-| **Build output directory** | `dist` |
-| Root directory | `/` (repo root) |
-
-`cloudflare-build.sh` copies only site files (`*.html`, `assets/`, `css/`, `js/`, `looks/`, `stories/`, `tv/`) into `dist/` and **excludes `.git`**.
-
-Also present:
-- `.assetsignore` — extra ignore list for Workers static assets
-- `.gitignore` — ignores `dist/`, `pasted-text.txt`, etc.
-
-### Direct upload (no Git build)
-
-Upload **only** the contents of `dist/` after running:
-
-```bash
-bash cloudflare-build.sh
-```
-
-Never zip/upload the folder that still contains `.git`.
-
----
-
-## Agent instructions (Grok CLI)
-
-1. **Read** this README + relevant HTML before large rewrites.  
-2. Keep **age = 25** (current) unless the user explicitly changes it.  
-3. **Do not re-add** booking, rate cards, cost tables, Telegram CTA, or site audio unless the user asks.  
-4. Prefer editing existing files over adding frameworks/npm.  
-5. New pictures → `assets/pictures/` + markup; **no spaces** in filenames.  
-6. Do not remove the 18+ age gate.  
-7. Story: keep `ch-01`…`ch-16` on home; full pages under `stories/`; update this README table if chapters change.  
-8. Keep nav rooms consistent across `index.html`, hubs, `letter.html`, `looks/*`, `stories/*`.  
-9. UI labels for nights/couple lore should stay **erotic/story-toned**, not tech jargon (“session log”, “badges”, etc.).  
-10. Sanity-check: age gate → Explore doors → gallery lightbox → chats tabs → full story chapter prev/next → nights sealed cards → tonight’s secret text present.
-
----
-
-## TV auction reel (unlisted)
-
-**Path:** `/tv/` → `tv/index.html`  
-
-**Not linked** from main nav or explore rooms (on purpose).
-
-| File | Role |
-|------|------|
-| `tv/index.html` | Fullscreen auction reel start + stage |
-| `tv/tv.css` | TV-optimized dark UI |
-| `tv/tv.js` | Slide builder, autoplay, keyboard, shuffle, wake lock |
-| `tv/images.json` | JSON catalog (optional fallback) |
-| `tv/images-data.js` | **Embedded catalog** (`window.TV_IMAGES`) — preferred loader |
-| `assets1/viji-auction/` | **Auction-only** image pack (not used in main site gallery markup) |
-| `assets/pictures/` | Original site photos — also included in the TV reel |
-| `assets/videos/` | Video still frames — also included in the TV reel |
-
-**Image sources for `/tv` (all of these):**
-1. `assets/pictures/**` (existing gallery / posters / banners / pre-wedding)
-2. `assets1/viji-auction/**` (auction pack — TV secret route focus)
-3. `assets/videos/**` (stills from the sex video)
-
-Main site pages do **not** link into `assets1/`; only the TV reel catalog does.
-
-**Behavior:**
-- **Portrait** images → **3 per slide**
-- **Landscape / wide** → full slide (or pair if two medium-wide)
-- Auto-advance ~**18s** per slide (auction pace — look & fix price); shuffle; caption lines
-- Keyboard: `←/→` slides, `Space` pause, `F` fullscreen, `C` captions
-- Image list loads from `images-data.js` (no fetch required)
-
-**Regenerate TV catalog after adding auction photos** (requires Pillow):
-
-```bash
-# from repo root — scans pictures + assets1/viji-auction + videos
-python3 scripts/rebuild-tv-images.py
-# or see cloudflare / agent notes; script may live as one-liner in history
-```
-
-Minimal one-liner if script missing: scan `assets/pictures`, `assets1/viji-auction`, `assets/videos` into `tv/images-data.js` with `src` like `/assets/...` and `/assets1/...`.
-
-**Private auction tip:** `python3 -m http.server 8080` → `http://localhost:8080/tv/` → start reel → **F**. Unlisted. No blackout controls.
-
-**Private claimed-nights ledger ( /tv only ):** shown on the start screen and toggle with **L** / **Ledger** during the reel. Records multi-night closes (e.g. 10 nights · ₹14,00,000). **Not** linked or shown on the public site.
-
-**Keep screen awake:** Wake Lock + silent video fallback in `tv.js`. Still set Smart TV sleep timer to **Off**.
-
----
-
-## New media rooms (2026-09 drop)
-
-| Path | What |
-|------|------|
-| `gallery-drop.html` | **267** compressed stills from `viji-new/` → `assets/pictures/viji-drop/` |
-| `chats-facebook.html` | **12** Facebook Messenger sex-chat screenshots → `assets/pictures/chats-fb/` |
-| Home `#gallery-drop` | Featured 12 + CTAs |
-| Home `#chats` tab **Facebook** | Teaser thread → full screenshot room |
-| Source dumps | `viji-new/`, `chat-screenshots/` gitignored — do not ship raw multi‑MB PNGs |
-
-Re-import: convert with Pillow into those asset folders, regenerate pages if counts change.
-
----
-
-## Product intent (for future features)
-
-- **Goal:** never-ending *exploration* (many rooms), not infinite scroll.  
-- **Hooks:** photos early, secrets that change, sealed nights, couple triangle (her / him / us), long story depth.  
-- **Avoid:** rate menus, generic porn that breaks Viji face continuity, dumping everything on one page.
-
----
-
-## License / content notice
-
-18+ adult erotic content. All depicted models are presented as adults.  
-Respect local laws and platform ToS when deploying.
+Source longform: `~/Desktop/workbench/bala-viji-affair/part-NN/`. Rebuild: `python3 scripts/rebuild-dual-stories-from-affair.py`.
